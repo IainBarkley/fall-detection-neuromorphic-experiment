@@ -1,2 +1,2 @@
-Welcome to the 2019 Nengo Summer School! Click on the "Wiki" tab above to get started - you'll find instructions regarding how to use this repo for your projects, along with lots of information about lecture content, speakers, tutorials, etc.
+Welcome to the 2019 Nengo Summer School! [Check out the wiki](https://github.com/ctn-waterloo/summerschool2019/wiki) for up-to-date information on tutorials, projects, and events.
 
