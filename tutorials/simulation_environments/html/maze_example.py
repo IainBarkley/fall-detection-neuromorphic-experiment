@@ -5,8 +5,6 @@ from functools import partial
 
 from random_maze import RandomBlockMazeGenerator
 
-# TODO: fix the visual misalignment issue
-
 model = nengo.Network(seed=13)
 
 n_sensors = 20
@@ -131,7 +129,6 @@ class NengoMazeEnvironment(object):
         """
         Generate a new map based on the current seed
         """
-        # TODO: make sure this seed setting actually works
         np.random.seed(self.current_seed)
 
         maze = RandomBlockMazeGenerator(maze_size=self.height - 2, # the -2 is because the outer wall gets added
@@ -141,8 +138,6 @@ class NengoMazeEnvironment(object):
     
     def _generate_svg(self):
         
-        # TODO: make sure coordinates are correct (e.g. inverted y axis)
-        # NOTE: x and y currently flipped from: https://github.com/tcstewar/ccmsuite/blob/master/ccm/ui/nengo.py
         # draw tiles
         tiles = []
         for i in range(self.height):
@@ -153,7 +148,7 @@ class NengoMazeEnvironment(object):
                     tiles.append(self.tile_template.format(i, j))
 
         # draw agent
-        direction = self.th * 180. / np.pi + 90. #TODO: make sure angle conversion is correct
+        direction = self.th * 180. / np.pi + 90.
         x = self.x
         y = self.y
         th = self.th
@@ -188,20 +183,30 @@ class NengoMazeEnvironment(object):
 
         self._nengo_html_ = svg
 
+    def free_space(self, x, y):
+        nx = np.clip(int(np.floor(x)), 1, self.width - 1)
+        ny = np.clip(int(np.floor(y)), 1, self.height - 1)
+        return self.map[nx, ny] == 0
+
     def __call__(self, t, v):
 
         if self.input_type == 'holonomic_velocity':
-            self.x += v[0] * self.dt
-            self.y += v[1] * self.dt
+            dx = v[0] * self.dt
+            dy = v[1] * self.dt
         elif self.input_type == 'directional_velocity':
             #NOTE: the second input is unused in this case
             self.th += v[2] * self.dt
-            self.x += np.cos(self.th) * v[0] * self.dt 
-            self.y += np.sin(self.th) * v[0] * self.dt 
+            dx = np.cos(self.th) * v[0] * self.dt
+            dy = np.sin(self.th) * v[0] * self.dt
         elif self.input_type == 'position':
-            self.x = v[0]
-            self.y = v[1]
+            dx = v[0] - self.x
+            dy = v[1] - self.y
             self.th = v[2]
+
+        # Only move if the new location is not a wall
+        if self.free_space(self.x + dx, self.y + dy):
+            self.x += dx
+            self.y += dy
         
         # Keep the agent within the bounds
         self.x = np.clip(self.x, 1, self.width - 1)
