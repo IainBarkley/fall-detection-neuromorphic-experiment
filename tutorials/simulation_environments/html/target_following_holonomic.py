@@ -2,6 +2,7 @@
 
 import nengo
 import numpy as np
+from shapes import circle, rectangle, triangle, canvas
 
 class Environment(object):
 
@@ -16,27 +17,23 @@ class Environment(object):
         self.dt = dt
 
         self._nengo_html_ = ''
-        
-        self.circle_template = '<circle cx="{0}" cy="{1}" r=".3" fill="{2}"/>'
 
     def _generate_svg(self):
         
-        # Header for the svg
-        svg = '<svg width="100%%" height="100%%" viewbox="0 0 {0} {1}">'.format(self.size, self.size)
+        shape_list = [
+            # bounding box
+            rectangle(
+                width=self.size, height=self.size, color='white',
+                outline_color='black', outline_width=0.1,
+            ),
+            # agent
+            circle(x=self.agent_x, y=self.agent_y, color='blue'),
+            # target
+            circle(x=self.target_x, y=self.target_y, color='green'),
+        ]
         
-        # Draw the outside bounding box
-        svg += '<rect width="{0}" height="{1}" style="fill:white;stroke:black;stroke-width:.1"/>'.format(self.size, self.size)
-
-        # Draw the agent
-        svg += self.circle_template.format(self.agent_x, self.agent_y, 'blue')
-
-        # Draw the target
-        svg += self.circle_template.format(self.target_x, self.target_y, 'green')
-        
-        # Closing tag
-        svg += '</svg>'
-
-        self._nengo_html_ = svg
+        # draw all of the shapes on the screen
+        self._nengo_html_ = canvas(shape_list, width=self.size, height=self.size)
 
     def scale(self, v):
 
@@ -86,10 +83,8 @@ with model:
         size_out=4,
     )
 
-    #velocity_input = nengo.Node([0, 0])
-
-    #nengo.Connection(velocity_input, env[[0, 1]])
     nengo.Connection(target_position, env[[2, 3]])
     nengo.Connection(env, state)
 
     nengo.Connection(state, env[[0, 1]], function=control)
+

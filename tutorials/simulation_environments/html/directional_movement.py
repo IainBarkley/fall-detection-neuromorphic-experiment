@@ -1,5 +1,7 @@
 import nengo
 import numpy as np
+from shapes import circle, rectangle, triangle, canvas
+
 
 class Environment(object):
 
@@ -11,13 +13,6 @@ class Environment(object):
         self.th = 0
 
         self.dt = dt
-        
-        self.svg_open = '<svg width="100%%" height="100%%" viewbox="0 0 {0} {1}">'.format(self.size, self.size)
-        self.walls = '<rect width="{0}" height="{1}" style="fill:white;stroke:black;stroke-width:.1"/>'.format(self.size, self.size)
-
-        self.agent_template = '<polygon points="0.25,0.25 -0.25,0.25 0,-0.5" style="fill:blue" transform="translate({0},{1}) rotate({2})"/>'
-        
-        self.svg_close = '</svg>'
 
         self._nengo_html_ = ''
 
@@ -35,10 +30,19 @@ class Environment(object):
             self.th += 2*np.pi
 
         direction = self.th * 180. / np.pi + 90.
-        self._nengo_html_ = self.svg_open
-        self._nengo_html_ += self.walls
-        self._nengo_html_ += self.agent_template.format(self.x, self.y, direction)
-        self._nengo_html_ += self.svg_close
+        
+        shape_list = [
+            # bounding box
+            rectangle(
+                width=self.size, height=self.size, color='white',
+                outline_color='black', outline_width=0.1,
+            ),
+            # agent
+            triangle(x=self.x, y=self.y, th=direction, color='blue'),
+        ]
+        
+        # draw all of the shapes on the screen
+        self._nengo_html_ = canvas(shape_list, width=self.size, height=self.size)
 
         return self.x, self.y, self.th
 
