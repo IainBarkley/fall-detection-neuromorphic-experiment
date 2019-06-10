@@ -3,29 +3,9 @@ import scipy.ndimage
 import numpy as np
 from functools import partial
 
-# need to install gym-maze to use this maze generator
-# https://github.com/zuoxingdong/gym-maze
-try:
-    from gym_maze.envs.generators import RandomBlockMazeGenerator
-except:
-    print("Could not find gym-maze, install from: https://github.com/zuoxingdong/gym-maze")
-    print("Using a fixed maze instead")
-    class RandomBlockMazeGenerator(object):
-        def __init__(self, map_size=12,  **kwargs):
-            self.maze = np.zeros((map_size, map_size))
-            
-            # add outer walls
-            self.maze[0,:] = 1
-            self.maze[-1,:] = 1
-            self.maze[:,0] = 1
-            self.maze[:,-1] = 1
+from random_maze import RandomBlockMazeGenerator
 
-            # a couple blocks in the middle
-            self.maze[5,5] = 1
-            self.maze[2,8] = 1
-            self.maze[6,1] = 1
-
-            print(self.maze.shape)
+# TODO: fix the visual misalignment issue
 
 model = nengo.Network(seed=13)
 
@@ -38,7 +18,6 @@ def sense_to_ang_vel(x, n_sensors):
     return np.dot(rotation_weights, np.array(x))
 
 def generate_sensor_readings(map_arr,
-                             zoom_level=4,
                              n_sensors=30,
                              fov_rad=np.pi,
                              x=0,
@@ -51,39 +30,40 @@ def generate_sensor_readings(map_arr,
     calculate the distance readings of each sensor to the nearest obstacle
     uses supersampling to find the approximate collision points
     """
-    arr_zoom = scipy.ndimage.zoom(map_arr, zoom_level, order=0)
     dists = np.zeros((n_sensors,))
 
     angs = np.linspace(-fov_rad / 2. + th, fov_rad / 2. + th, n_sensors)
 
     for i, ang in enumerate(angs):
-        dists[i] = get_collision_coord(arr_zoom, x*zoom_level, y*zoom_level, ang, max_sensor_dist*zoom_level) / zoom_level
+        dists[i] = get_collision_coord(map_arr, x, y, ang, max_sensor_dist)
 
     return dists
 
+
 def get_collision_coord(map_array, x, y, th,
                         max_sensor_dist=10*4,
+                        dr=0.05,
                        ):
     """
     Find the first occupied space given a start point and direction
     Meant for a zoomed in map_array
     """
     # Define the step sizes
-    dx = np.cos(th)
-    dy = np.sin(th)
+    dx = np.cos(th) * dr
+    dy = np.sin(th) * dr
 
     # Initialize to starting point
     cx = x
     cy = y
 
-    for i in range(max_sensor_dist):
+    for i in range(int(max_sensor_dist/dr)):
         # Move one unit in the direction of the sensor
         cx += dx
         cy += dy
-        cx = np.clip(cx, 0, map_array.shape[0] - 1)
-        cy = np.clip(cy, 0, map_array.shape[1] - 1)
+        #cx = np.clip(cx, 0, map_array.shape[0] - 1)
+        #cy = np.clip(cy, 0, map_array.shape[1] - 1)
         if map_array[int(cx), int(cy)] == 1:
-            return i
+            return (i - 1)*dr
 
     return max_sensor_dist
 
@@ -187,7 +167,6 @@ class NengoMazeEnvironment(object):
         lines = []
         self.sensor_dists = generate_sensor_readings(
             map_arr=self.map,
-            zoom_level=8,
             n_sensors=self.n_sensors,
             fov_rad=self.fov_rad,
             x=x,
