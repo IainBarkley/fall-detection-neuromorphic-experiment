@@ -41,8 +41,10 @@ class Pong(object):
             else:
                 self.ball[1] = 2*self.bounds_y[0] - self.ball[1]
                 self.ball_v[1] *= -1
+                
+        return self.ball[0], self.ball[1], self.bar
     def make_node(self):
-        return nengo.Node(self.update, size_in=1, size_out=0)
+        return nengo.Node(self.update, size_in=1, size_out=3)
         
     def make_display(self):
         def update(t):
@@ -85,4 +87,7 @@ with model:
     keyboard = nengo.Node(keyboard_func)
     
     nengo.Connection(keyboard, world, synapse=None)
+    
+    state = nengo.Ensemble(n_neurons=200, dimensions=3)
+    nengo.Connection(world, state)
     
