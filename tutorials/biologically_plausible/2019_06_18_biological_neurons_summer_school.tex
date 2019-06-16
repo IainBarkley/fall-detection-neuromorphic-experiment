@@ -1,0 +1,670 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage{framed}
+\usepackage{enumitem}
+\input{setup_presentation}
+
+\title{Nengo Summerschool 2019}
+\subtitle{Biologically Detailed Networks and Neuron Models}
+\author{Peter Duggins, Andreas Stöckel}
+\date{June 18, 2018}
+
+\setbeamertemplate{footline}[frame number]
+
+\renewcommand{\emph}[1]{{\color{violet}\textit{#1}}}
+\setlist[itemize]{font=\color{violet},label=\textbullet} 
+
+\AtBeginDocument{%
+	\abovedisplayskip=6pt
+	\abovedisplayshortskip=0pt
+	\belowdisplayskip=6pt
+	\belowdisplayshortskip=0pt
+}
+
+\begin{document} 
+
+\begin{frame}[plain,noframenumbering]
+	\centering\vspace{1cm}
+	{\Large{\inserttitle}\\[0.25cm]}
+	{\huge\color{violet}{\insertsubtitle}\\[0.75cm]}
+	{\large{\insertauthor}\\[0.5cm]}
+	\includegraphics[height=2cm]{media/uwlogo.pdf}
+	\raisebox{0.5cm}{\includegraphics[height=1cm]{media/cnrg_logo.pdf}}\\[0.25cm]
+	\insertdate
+\end{frame}
+
+\begin{frame}[plain,noframenumbering]
+	{\centering\Huge\addfontfeature{LetterSpace=10.0}{OUTLINE}\\\color{aluminium3}\\}
+	\large\vspace{-0.75cm}
+	\setlist[enumerate]{font=\color{violet},labelindent=0cm,leftmargin=*,label=\Roman*,widest=III,align=right,labelsep=0.5cm}
+	\begin{enumerate}
+		\setlength{\itemsep}{0.5cm}
+		\item<1-> \emph{Motivation \& Background}\\Why care about biological detail?
+		\item<2-> \emph{Conductance-based $n$-LIF neurons} $\leftarrow$ Andreas\\How to computationally exploit nonlinear dendritic interaction
+		\item<3-> \emph{Detailed NEURON Models and the NEF} $\leftarrow$ Peter\\How to integrate detailed neuron models into the NEF
+		\item<4-> \emph{\texttt{nengo-bio} hands-on} $\leftarrow$ Andreas\\Build networks adhering to Dale's principle and exploit dendritic computation
+	\end{enumerate}			
+\end{frame}
+
+\begin{frame}[noframenumbering,plain]
+\centering
+\Large\textsc{PART I}\\[0.5cm]
+{\huge\color{violet}Motivation \& Background}
+\end{frame}
+
+\begin{frame}{Motivation --- \emph{Levels of Analysis}}
+	\centering
+	\vspace{1cm}
+	\includegraphics<1>[scale=0.85]{media/levels_of_analysis_00.pdf}%
+	\includegraphics<2>[scale=0.85]{media/levels_of_analysis_01.pdf}%
+	\includegraphics<3>[scale=0.85]{media/levels_of_analysis_02.pdf}%
+	\includegraphics<4>[scale=0.85]{media/levels_of_analysis_03.pdf}%
+	\includegraphics<5>[scale=0.85]{media/levels_of_analysis_04.pdf}%
+	\includegraphics<6>[scale=0.85]{media/levels_of_analysis_05.pdf}%
+	\includegraphics<7>[scale=0.85]{media/levels_of_analysis_06.pdf}%
+	\includegraphics<8>[scale=0.85]{media/levels_of_analysis_07.pdf}%
+\end{frame}
+
+\begin{frame}{Motivation --- \emph{Computational Power of Biological Neurons}}
+	\vspace{0.25cm}
+	\centering
+	\includegraphics<1>[width=1\textwidth]{media/izhikevich_whichmod_figure1.pdf}
+	\includegraphics<2>[width=1\textwidth]{media/izhikevich_whichmod_figure2.pdf}\\[0.25cm]
+	{\footnotesize\color{aluminium4}Adapted from Izhikevich (2004), \textit{Which Model to Use for Cortical Spiking Neurons?}}
+\end{frame}
+
+\begin{frame}{Motivation --- \emph{Computational Power of Biological Neurons}}
+	\begin{itemize}
+		\setlength{\itemsep}{0.5cm}
+		\item<1-> LIF model accounts for a fraction of the behaviour found in biological neurons
+		\item<2-> \textbf{Questions:}\\
+		\begin{itemize}
+			\setlength{\itemsep}{0.3cm}
+			\item In how far is the additional detail functionally \emph{relevant}?
+			\item<3-> What is its role in terms of \emph{computation}?
+			\item<4-> Can we \emph{harness} these details to perform computation?
+		\end{itemize}
+		\item<5-> \textbf{Example:}\\
+		\begin{itemize}
+			\setlength{\itemsep}{0.3cm}
+			\item Excitatory and inhibitory channels interact nonlinearly.
+			\item<6->[$\leadsto$] Can we exploit this nonlinearity systematically?
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+%\begin{frame}{Motivation --- \emph{Neuromorphic Hardware}}
+%	\begin{overlayarea}{\textwidth}{0.8\textheight}
+%		\only<1->{\begin{columns}[b]
+%			\column{0.5\textwidth}
+%			\emph{(a)} Non-ideal model neurons implemented in neuromorphic hardware may be more efficient
+%			\column{0.5\textwidth}
+%			\emph{(b)} Some platforms (e.g.~BrainScaleS) implement more biologically detailed models
+%		\end{columns}}
+%		\only<2->{
+%		\centering
+%		\includegraphics[scale=0.75]{media/diagonal_arrows.pdf}\\
+%		\begin{minipage}{0.5\textwidth}
+%			\centering
+%			Methods presented here are applicable to neuromorphic hardware as well
+%		\end{minipage}\\}
+%		\only<3->{
+%		\includegraphics[scale=0.75]{media/down_arrow.pdf}\\
+%		\begin{minipage}{0.5\textwidth}
+%			Better utilization of neuromorphic hardware
+%		\end{minipage}}
+%	\end{overlayarea}
+%\end{frame}
+
+\begin{frame}{Motivation --- \emph{Recreating Idiosyncrasies of the Brain}}
+	\centering
+	\vspace{0.5cm}
+	\includegraphics<1>[width=\textwidth]{media/motivation_idiosyncrasies_01.pdf}%
+	\includegraphics<2>[width=\textwidth]{media/motivation_idiosyncrasies_02.pdf}%
+	\includegraphics<3>[width=\textwidth]{media/motivation_idiosyncrasies_03.pdf}%
+\end{frame}
+
+\begin{frame}{Neurobiology --- \emph{Idealized \enquote{Textbook} Neuron}}
+	\centering
+	\vspace{1cm}
+	\includegraphics[width=0.8\textwidth]{media/neuron_sketch}\\[0.5cm]
+	\begin{overlayarea}{\textwidth}{1cm}
+		\centering
+		\only<2->{
+			{\color{violet}❶}
+			Dendrites collect input $\longrightarrow$
+			{\color{violet}❷}
+			Integrated in soma $\longrightarrow$
+			{\color{violet}❸}
+			Output spikes travel along axon}
+	\end{overlayarea}
+\end{frame}
+
+\begin{frame}{Neurobiology --- \emph{Neural Heterogeneity}}
+	\begin{columns}
+		\column{0.5\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{media/cajal_neuroglia.png}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.8\textwidth]{media/cajal_retina.png}\\
+			\includegraphics[width=0.4\textwidth]{media/cajal_purkinje.png}\\
+			\vspace{-0.75cm}\begin{minipage}{6cm}{\raggedleft\footnotesize Drawings by\\Santiago Ramón y Cajal\\}\end{minipage}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Synapses --- \emph{Biophysics}}
+%\centering{How do neurons receive input signals from one another?}
+    \only<1>{
+    \begin{figure}
+      \centering
+      \includegraphics[height=0.925\textheight]{media/large_synapse.png}
+      % https://socratic.org/questions/how-do-impulses-travel-across-a-synapse
+    \end{figure}}
+%    \only<2>{
+%    \begin{figure}
+%      \centering
+%      \includegraphics[height=0.8\textheight]{media/small_synapse.jpeg}
+%      % http://cbm.msoe.edu/crest/ePosters/2014alvernoPotassiumChannel.html
+%    \end{figure}}
+    % Figure here for current and voltage?
+    
+    % neurotransmitter random walk and receptor binding
+    % receptor kinetics and coupling with ion channels
+    % ion channel dynamics, current, and voltage
+    % receptor density and learning
+\end{frame}
+
+%\begin{frame}{Synapses --- \emph{Conductance- and Current-Based Models}}
+%	Mathematical formalism
+%    \begin{itemize}
+%      \item Synapse and receptor count $\Rightarrow$ synaptic ``weight'' ($w_{ij}$)
+%      \begin{itemize}
+%        \item learning (STDP, LTP/LDP) $\Rightarrow$ global rules for $\Delta w_{ij}$
+%      \end{itemize}
+%      \pause
+%      \item Receptor dynamics\\
+%      {\centering    \includegraphics[width=0.4\textwidth]{media/receptor_subunits_half.png}
+%      \includegraphics[width=0.4\textwidth]{media/synaptic_filter.pdf}}
+%    \end{itemize}
+%    \vspace{0.25cm}
+%    \emph{Ignores:} physical space, fast dynamics (rise times), adaptation (neurotransmitter depletion)
+%\end{frame}
+
+
+\begin{frame}{Electrophysiological Dynamics --- \emph{Biophysics}}
+	\centering
+	\includegraphics<1>{media/cable_propagation_00.pdf}%
+	\includegraphics<2>{media/cable_propagation_01.pdf}%
+	\includegraphics<3>{media/cable_propagation_02.pdf}%
+	\includegraphics<4>{media/cable_propagation_03.pdf}%
+% \centering{How do neurons process synaptic inputs and transmit them onwards?}
+	% membrane voltage <--> ion channel dynamics
+    % spatial dependence
+    	% - dendritic tree ?=> nonlinear computation of synaptic inputs?
+        % - soma/axon hillock ==> integration (leaky)
+        % - axon ==> creation and propagation of uniform signal
+\end{frame}
+
+%\begin{frame}{Electrophysiological Dynamics --- \emph{Compartmental Models}}
+%	Mathematical formalism
+%    \begin{itemize}
+%      \item cell geometry $\Rightarrow$ segments of electrical cable
+%      \pause
+%      \item electrodynamics
+%      \begin{itemize}
+%      	\item between segments $\Rightarrow$ cable equation ($\frac{r_m}{r_l} \frac{\partial^2 V}{\partial x^2} = c_m r_m \frac{\partial V}{\partial t} + V$)
+%        \item within segments $\Rightarrow$ system of ODEs for voltage-gated ion channels
+%        \pause
+%        \end{itemize}
+%    \end{itemize}
+%    \pause
+%    \vspace{1cm}
+%    Considerations
+%    \begin{itemize}
+%      \item accuracy $\propto$ compartments, ion channels, $dt$
+%      \item cell-specific
+%    \end{itemize}
+%\end{frame}
+
+% Section: NEF vs. HBP
+\begin{frame}{Comparing LIF and Biology}
+  \renewcommand{\arraystretch}{1.5}
+  \centering
+  \relscale{0.85}\begin{tabular}{r c c r c c}
+  	\toprule
+  		\multicolumn{3}{c}{\textbf{\textsc{Complexity}}} & \multicolumn{3}{c}{\textbf{\textsc{NEF compatibility}}}\\
+  		\cmidrule(r){1-3}\cmidrule(l){4-6}
+		& \emph{LIF} & \emph{BIO} & & \emph{LIF} & \emph{BIO} \\
+		\cmidrule(r){1-1}\cmidrule(r){2-2}\cmidrule(r){3-3}\cmidrule(lr){4-4}\cmidrule(r){5-5}\cmidrule(l){6-6}
+		\textbf{Geometry} & point & compartmental & \textbf{Tuning curve} & $A=f(\mathbf{x})$ & $A=f(\mathbf{x}, t)$ \\
+		\textbf{Synapse} & current & conductance & \textbf{Inputs} & linear filter & synaptic nonlinearity \\
+		\textbf{Dynamics} & integrate, leak & ion channels & \textbf{Dynamics} & synapse dominates & neuron dominates \\
+				 & voltage reset & cable equation & \textbf{Decoders} & static & time-dependent \\
+		\textbf{Simulation} & fast & slow & \textbf{Estimates} & $\sum_j a_i(t) * \mathbf{d}_i^f$ & ? \\
+  	\bottomrule
+  \end{tabular}
+\end{frame}
+
+%\begin{frame}{NEF compatibility: \emph{LIF vs. BIO}}
+%\begin{table}
+%\renewcommand{\arraystretch}{2}
+%\begin{tabular}{l || c | c }
+% & LIF & BIO \\
+%\hline \hline
+%Tuning Curve & 
+%% Tuning Curve & $a_i^{-1} = \tau_{ref}-\tau_{rc} \log(1 - \frac{J_{thr}}{J_{in}})$ & adaptation \\
+%Inputs & linear sum of filtered spikes & spike timing thru synapse \\
+%\pause
+%Dynamics & synapse dominates & neuron model dominates \\
+%\pause
+%Decoders & static evaluation points & time-dependent \\
+%%\pause
+%%Estimates & $\mathbf{\hat{x}}(t) = \sum_j a_i(t) * \mathbf{d}_i^f$ & ? \\
+%\end{tabular}
+%% \caption{NEF Compatibility}
+%\end{table}\end{frame}
+
+\begin{frame}[noframenumbering,plain]
+\centering
+\Large\textsc{PART II}\\[0.5cm]
+{\huge\color{violet}Conductance-based $n$-LIF neurons}
+\end{frame}
+
+\begin{frame}{Reversal potentials}
+	\centering
+	\includegraphics[width=0.35\textwidth]{media/neuron_channel_a.pdf}\hspace{1cm}
+	\includegraphics[width=0.35\textwidth]{media/neuron_channel_b.pdf}\\[0.25cm]
+	{\color{aluminium4}\footnotesize Illustration adapted from Reichert, 2000, Neurobiology.}\\[0.5cm]
+	Ion channels possess a specific \emph{reversal potential} corresponding to the\\
+	combination of \emph{ion species} they are permeable for.
+\end{frame}
+
+\begin{frame}{Current vs. Conductance-Based LIF}
+	\centering
+	\begin{columns}
+		\column{0.5\textwidth}
+		\centering
+		\emph{Current-based LIF}\\[0.5cm]
+		\begin{overlayarea}{\textwidth}{0.35\textheight}
+			\centering
+			\includegraphics<1>[width=0.9\textwidth]{media/equivalent_circuit_a.pdf}
+			\includegraphics<2>[width=0.5\textwidth]{media/n_comp_lif_a.pdf}
+			\includegraphics<3>[width=0.5\textwidth]{media/n_comp_lif_a_b.pdf}
+		\end{overlayarea}
+		\begin{overlayarea}{\textwidth}{0.25\textheight}
+			\only<1-2>{\begin{align*}
+				C_\mathrm{m} \dot u(t) &=
+					               J^\mathrm{bias} \\
+					&           +  \alpha J^\mathrm{syn}(t) \\
+					&           +  g_\mathrm{L} (E_\mathrm{L} - u(t))
+			\end{align*}}
+			\only<3>{\begin{align*}
+				C_\mathrm{m} \dot u(t) &=
+				J^\mathrm{bias} \\
+				&           +  \alpha \big(J^+(t) - J^-(t)\big) \\
+				&           +  g_\mathrm{L} (E_\mathrm{L} - u(t))
+			\end{align*}}
+		\end{overlayarea}
+		\column{0.5\textwidth}
+		\centering
+		\emph{Conductance-based LIF}\\[0.5cm]
+		\begin{overlayarea}{\textwidth}{0.35\textheight}
+			\centering
+			\includegraphics<1>[width=0.9\textwidth]{media/equivalent_circuit_b.pdf}
+			\includegraphics<2->[width=0.5\textwidth]{media/n_comp_lif_b.pdf}
+		\end{overlayarea}
+		\begin{overlayarea}{\textwidth}{0.25\textheight}
+			\begin{align*}
+	            C_\mathrm{m} \dot u(t) &=
+				                   g_\mathrm{E}(t)    (E_\mathrm{E}    - u(t)) \\
+				    &           +  \; g_\mathrm{I}(t) (E_\mathrm{I} \; - u(t)) \\
+				    &           +  \; g_\mathrm{L} (E_\mathrm{L} \, - u(t))
+			\end{align*}
+		\end{overlayarea}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Current vs. Conductance-Based LIF Tuning Curves}
+	\includegraphics<1>{media/spike_rate_comparison_00.pdf}
+	\includegraphics<2>{media/spike_rate_comparison_01.pdf}
+	\includegraphics<3>{media/spike_rate_comparison_02.pdf}
+\end{frame}
+
+\begin{frame}{Single-compartment conductance-based LIF}
+	\begin{itemize}
+		\item For firing rates $\gg 0$, conductance-based LIF is boring
+	\end{itemize}
+
+	{\centering
+	\includegraphics[width=0.75\textwidth]{media/neuron_transitions_cond_vs_cur.pdf}\\}
+	\begin{itemize}
+		\item Can assume average membrane potential $\bar u$ \only<3->{\emph{$\Rightarrow$} just a skewed current-based LIF!}
+		\begin{overlayarea}{\textwidth}{1cm}
+		\only<1>{$$
+			C_\mathrm{m} \dot u(t) =
+			g_\mathrm{E}(t) (E_\mathrm{E}    - u(t))
+			+  g_\mathrm{I}(t) (E_\mathrm{I} \; - u(t))
+			+  g_\mathrm{L} (E_\mathrm{L} \, - u(t))
+			$$}
+		\only<2>{$$
+			C_\mathrm{m} \dot u(t) =
+			g_\mathrm{E}(t) (E_\mathrm{E}    - \bar u)
+			+  g_\mathrm{I}(t) (E_\mathrm{I} \; - \bar u)
+			+  g_\mathrm{L} (E_\mathrm{L} \, - u(t))
+			$$}
+		\only<3->{$$
+			C_\mathrm{m} \dot u(t) =
+			g_\mathrm{E}(t) \alpha_\mathrm{E}
+			+  g_\mathrm{I}(t) \alpha_\mathrm{I}
+			+  g_\mathrm{L} (E_\mathrm{L} \, - u(t))
+			$$}
+	\end{overlayarea}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Challenges and Extending the NEF}
+	\begin{itemize}
+		\setlength{\itemsep}{0.5cm}
+		\item<1-> \textbf{Challenges}
+		\begin{itemize}
+			\setlength{\itemsep}{0.25cm}
+			\item[❶]<2->  NEF assumes a constant \emph{bias current}\\
+			\emph{$\Rightarrow$} Reinterpretation of tuning curves; optimize weights in \emph{current-space}
+			\item[❷]<3-> NEF does not distinguish between \emph{excitatory and inhibitory weights}\\
+			\emph{$\Rightarrow$} Solve \emph{non-negative} optimization problems
+		\end{itemize}
+		\item<4-> \textbf{Extensions}
+		\begin{itemize}
+			\setlength{\itemsep}{0.25cm}
+			\item[❸]<5-> Account for \emph{sub-threshold currents} in the optimization process
+			\item[❹]<6-> Take \emph{dendritic non-linearity} into account
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{❶ Eliminating the Bias Current}
+	\centering
+	\includegraphics[width=0.9\textwidth]{media/tuning_curves_currents.pdf}
+
+	\begin{overlayarea}{\textwidth}{2cm}
+		\begin{itemize}
+			\item<2-> Interpret tuning curve as normative: \enquote{We \emph{want} firing rate $a$ if the neuron represents $x$}
+			\item<3-> Firing rates correspond to a current $J$: \enquote{We \emph{want} a current $J$ if the neuron represents $x$}
+			\item<4->[$\Rightarrow$] Find a current-decoder for \only<4>{each individual post-neuron}\only<5->{\fcolorbox{aluminium5}{aluminium5}{\color{white}\textbf{each individual post-neuron}} (instead of population-wise)}
+		\end{itemize}
+	\end{overlayarea}
+\end{frame}
+
+\begin{frame}{❷ Nonnegative Weight Optimization}
+	\begin{itemize}
+		\item Assume a post-neuron receives both excitatory and inhibitory input\\
+		     from each pre-neuron $i$ \emph{$\Rightarrow$} weight vectors $\vec w_i^+$, $\vec w_i^-$.
+	\end{itemize}
+
+	\begin{align*}
+	\begin{aligned}
+	\min_{\vec w_i^+, \vec w_i^-} &~\hphantom{=\,} \frac{1}2 \sum_{k=1}^N \big\| \vec w_i^+\!\vec a_k^+ - \vec w_i^-\!\vec a_k^- - J\big(\langle \vec e_i, f(\vec x_k)\rangle\big) \big\|_2^2 \\
+	&= \frac{1}2 \big\| \vec w_i'\!A' - \vec \jmath \big\|_2^2 \quad\text{where } \vec w_i' = (\vec w_i^+, \vec w_i^-\big),\, A' =  (A^+, -A^-\big)^T,\\&~ \hspace{4.625cm} \text{and } (\vec \jmath)_k = J\big(\langle \vec e_i, f(\vec x_k)\rangle\big) \,, \\
+	\text{subject to} &~ \vec w_i^+ \geq 0, \vec w_i^- \geq 0
+	\end{aligned}
+	\end{align*}
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Can remove rows/columns from $A'$ and $\vec w_i$ to account for Dale's principle (e.g.~only 20\% of pre-neurons are inhibitory, 80\% are excitatory)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{❸ Account for sub-threshold currents}
+	\begin{itemize}
+		\item Tuning curves are not injective (one-to-one): multiple $x$ map onto a zero output rate
+		\item[$\Rightarrow$] If the target rate is zero, we do not care about the current, as long as the rate is zero
+		\item[$\Rightarrow$] Turn zero-rates into inequality instead of equality constraints (quadratic programming)
+	\end{itemize}
+	\centering
+	\includegraphics[width=0.75\textwidth]{media/mask_negative.pdf}
+\end{frame}
+
+\begin{frame}{❹ Take \emph{dendritic nonlinearity} into account}
+	\begin{itemize}
+		\setlength{\itemsep}{0.25cm}
+		\item Generalise dendritic interaction between excitation and inhibition
+		\item Dendritic nonlinearity $H$ converts synaptic state to somatic current
+		\item<2-> \textbf{Example:}\\
+			\emph{Current-based model:} $H(J^+, J^-) = J^+ - J^-$
+			\begin{align*}
+			\begin{aligned}
+			\min_{\vec w_i^+, \vec w_i^-} &~\hphantom{=\,} \frac{1}2 \sum_{k=1}^N \big\| H( \vec w_i^+\!\vec a_k^+, \vec w_i^-\!\vec a_k^-) - J\big(\langle \vec e_i, f(\vec x_k)\rangle\big) \big\|_2^2 \\
+			\text{subject to} &~ \vec w_i^+ \geq 0, \vec w_i^- \geq 0
+			\end{aligned}
+			\end{align*}
+		\item<3-> \textbf{Questions:}
+		\begin{itemize}
+			\item Can we find more interesting $H$?
+			\item Can we exploit $H$ as a computational resource?
+			\item Under which conditions can we efficiently solve the optimization problem?
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Computing Multivariate Nonlinear Functions}
+	\centering
+	\raisebox{1.1cm}{\textbf{(A)}}\includegraphics[width=0.35\textwidth]{media/network_a.pdf}\hspace{1cm}
+	\raisebox{1.1cm}{\textbf{(B)}}\includegraphics[width=0.35\textwidth]{media/network_b.pdf}
+	\raisebox{1.1cm}{\textbf{(C)}}\includegraphics[width=0.35\textwidth]{media/network_c.pdf}\\[0.5cm]
+	\emph{Example:} Multiplication, compute $\phi(\vec z) = \phi(x, y) = x \cdot y$
+\end{frame}
+
+\begin{frame}{Two-compartment LIF neuron}
+	{\centering
+	\includegraphics[width=0.35\textwidth]{media/n_comp_lif_c.pdf}\hspace{0.75cm}
+	\includegraphics[width=0.55\textwidth]{media/coupling_conductance_linearity_small.pdf}\\}
+
+	\begin{itemize}
+		\item Dendritic nonlinearity:
+		$$H(g_\mathrm{E}, g_\mathrm{I}) = \frac{b_1 + b_2 g_\mathrm{E} + b_3 g_\mathrm{I}}{a_1 + a_2 g_\mathrm{E} + a_3 g_\mathrm{I}}$$\\[0.25cm]
+		\item<2-> Can still formalize weight-optimization as convex quadratic programming problem, guaranteed to find global optimum
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Results -- \emph{Dendritic computation} (I)}
+	\includegraphics[width=\textwidth]{media/results_example.pdf}
+\end{frame}
+
+\begin{frame}{Results -- \emph{Dendritic computation} (II)}
+	\centering
+	\includegraphics[width=\textwidth]{media/result_table.pdf}\\[0.5cm]
+	\url{http://arxiv.org/abs/1904.11713}
+\end{frame}
+
+\begin{frame}{Three-compartment LIF neuron}
+	\begin{columns}
+		\column{0.5\textwidth}
+		{\centering
+		\includegraphics[width=0.66\textwidth]{media/n_comp_lif_d.pdf}\\}
+		\begin{itemize}
+			\item Dendritic nonlinearity:
+			$$\left( \frac{b^1_1 + b^1_2 g_\mathrm{E} + b^1_3 g_\mathrm{I}}{a^1_1 + a^1_2 g_\mathrm{E} + a^1_3 g_\mathrm{I}} \right) \cdot
+			  \left( \frac{b^2_1 + b^2_2 g_\mathrm{E} + b^2_3 g_\mathrm{I}}{a^2_1 + a^2_2 g_\mathrm{E} + a^2_3 g_\mathrm{I}} \right)
+			$$\\[0.25cm]
+			\item<2-> For $n$-LIF, $n \geq 3$: can formalize weight-optimization as iterative trust-region-based optimization problem; \emph{not} guaranteed to find global optimum
+		\end{itemize}
+		\column{0.5\textwidth}
+		\includegraphics[width=\textwidth]{media/three_compartment_nonlinearity.pdf}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Three-compartment LIF neuron -- \emph{Example}}
+%	\includegraphics<1>[width=\textwidth]{media/01_multi_comp_iterative.pdf}%
+	\includegraphics<1>[width=\textwidth]{media/02_multi_comp_iterative.pdf}%
+	\includegraphics<2>[width=\textwidth]{media/03_multi_comp_iterative.pdf}%
+	\includegraphics<3>[width=\textwidth]{media/04_multi_comp_iterative.pdf}%
+	\includegraphics<4>[width=\textwidth]{media/05_multi_comp_iterative.pdf}%
+	\includegraphics<5>[width=\textwidth]{media/06_multi_comp_iterative.pdf}%
+	\includegraphics<6>[width=\textwidth]{media/07_multi_comp_iterative.pdf}%
+	\includegraphics<7>[width=\textwidth]{media/08_multi_comp_iterative.pdf}%
+	\includegraphics<8>[width=\textwidth]{media/09_multi_comp_iterative.pdf}%
+	\includegraphics<9>[width=\textwidth]{media/10_multi_comp_iterative.pdf}%
+\end{frame}
+
+
+\begin{frame}[noframenumbering,plain]
+\centering
+\Large\textsc{PART III}\\[0.5cm]
+{\huge\color{violet}Detailed Neuron Models and the NEF}
+\end{frame}
+
+\begin{frame}{``Black Box'' Modelling}
+\centering
+\textbf{Goal}: methods to plug arbitrarily-complex neuron models into Nengo\\[0.5cm]
+\includegraphics{media/neuron_sketch_black_box.pdf}\\[0.5cm]
+% say something about "why" this complexity is useful
+%  - specify neuron model in a language that handles bio constraints and interface with nengo
+%  - assume neuron model is "black box"
+%  - optimize synaptic weights to implement principles 1,2,3
+%  - figure: NEURON code snippet \Rightarrow compartmental model
+%  - cover middle of compartmental model with black box w/ question mark
+%  - nengo code snippet \rightarrow weights on synapses and spikes from axon
+\end{frame}
+
+\begin{frame}{Neuron Model}
+  \begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{media/bahl_neuron.png}
+  \caption{Morphology and electrophysiology for (a) a detailed reconstruction of a layer 5 pyramidal neuron and (b) a reduced model with 7 anatomical sections, 20 compartments, and 9 ion channels \cite{bahl2012}.}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Training}
+\textbf{Want}: accurate state-space representation, transformation, dynamics \\
+\pause
+\vspace{0.5cm}
+\textbf{Setup}: 
+  \begin{itemize}
+  \item decompose synaptic $w_{ij} = \mathbf{d}_i \cdot \mathbf{e}_j$
+  \item choose $\mathbf{e}_j$, $\alpha_j$, $\beta_j$ s.t. heterogeneous ``tuning curves''
+  \item emulate bias with randomly-weighted connection
+  \end{itemize}
+\vspace{0.5cm}
+\pause
+\textbf{Training}: calculate readout decoders $\mathbf{d}^{out}$:
+  \begin{itemize}
+  \item Simulate bioneuron network
+  \item Collect activities $a(t)$ and targets $\mathbf{x}(t)$
+  \item $\mathbf{d}^{out} = \mathrm{solver} (a(t), \mathbf{x}(t))$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{NEF Principles 0-2}
+  \only<1>{
+  %mention that decoders don't come from these tuning curves, just a check
+    \begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{media/tuning_curves.png}
+    \caption{Heterogeneous bioneuron activities with randomly distributed $\mathbf{e}_j$, $\alpha_j$, $\beta_j$.}
+    \label{oracle_tuning_curves}
+    \end{figure}}
+  \only<2>{
+    \begin{figure}
+    \centering
+    % \includegraphics[width=0.85\textwidth]{oracle_representation.pdf}
+    \includegraphics[height=0.8\textheight]{media/pre_bio_decode.png}
+    \caption{Principle 1: Representation}
+    \label{representation}
+    \end{figure}}
+  \only<3>{\begin{figure}
+    \centering
+    % \includegraphics[width=0.85\textwidth]{oracle_representation.pdf}
+    \includegraphics[height=0.8\textheight]{media/pre_fx_decode.png}
+    \caption{Principle 2: Transformation}
+    \label{transformation}
+    \end{figure}}
+\end{frame}
+
+\begin{frame}{Principle 3: Dynamics}
+	\textbf{Theory}:
+    \begin{itemize}
+      \item $\dot{\mathbf{x}} = A\mathbf{x} + B\mathbf{u}$
+      \item natural neural dynamics $\Rightarrow A'\mathbf{x} + B'\mathbf{u} \Rightarrow \mathbf{d}^{ff}, \mathbf{d}^{fb}$
+      \item Problem: $A \Rightarrow A'$ assumes synapse dominates dynamics
+    \end{itemize}
+  \vspace{0.5cm}
+  \pause
+  \textbf{Question}: How to optimize feedback decoders $\mathbf{d}^{fb}$?
+  \begin{itemize}
+    \item $\mathbf{d}^{fb}$ affects synaptic weights $w^{fb} = \mathbf{d}^{fb} \cdot \mathbf{e}$
+    \item $w^{fb}$ affects $a(t)$
+    \item $a(t)$ affects $\mathbf{d}^{fb}=$ solver($a(t)$, $\mathbf{x}(t)$)
+  \end{itemize}
+  \vspace{0.5cm}
+  \pause
+  \textbf{Possible approaches}:
+  \begin{itemize}
+  	%linear filter
+    \item supervise with training spikes ``unrolling'' the recurrence
+    \item open up the ``black box'' to characterize internal dynamics
+    \item project to/from higher dimensions with random weights
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Application: Working Memory}
+  \begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{media/DRT_homemade.png}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Working Memory Model}
+    \begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{media/sDRT_network.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Drugs Affect Working Memory}
+  \only<1>{
+    \begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight]{media/sDRT_control.png}
+    \end{figure}}
+  \only<2>{
+    \begin{figure}
+    \centering
+    \includegraphics[height=0.8\textheight]{media/sDRT_neural.png}
+    \end{figure}}
+\end{frame}
+
+\begin{frame}[noframenumbering,plain]
+\centering
+\Large\textsc{PART IV}\\[0.5cm]
+{\huge\color{violet}\texttt{nengo-bio} hands-on}
+\end{frame}
+
+\begin{frame}[noframenumbering,plain]
+\centering
+\Large\textsc{PART V}\\[0.5cm]
+{\huge\color{violet}Summary \& Conclusion}
+\end{frame}
+
+\begin{frame}{Summary}
+	\begin{itemize}
+		\setlength{\itemsep}{0.5cm}
+		\item<1-> Modelling with biologically plausible neurons is interesting for a variety of reasons
+		\item<2-> Conductance-based synapses can be integrated into the NEF and increase the computational power per neuron
+		\item<3-> Arbitrarily complex neuron models can be substituted into Nengo\\networks with mixed success (so far)
+	\end{itemize}
+
+	\begin{overlayarea}{\textwidth}{0.25\textheight}
+	\only<5->{
+	\Huge
+	\centering
+	{\color{aluminium3}}
+
+	Thank you for your attention!}
+	\end{overlayarea}
+\end{frame}
+
+\backupbegin
+
+\backupend
+
+\end{document}

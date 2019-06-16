@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1.6179231in"
+   height="1.2471038in"
+   viewBox="0.2 0 41.119813 31.676435"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="n_comp_lif.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#c1c1c1"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="71.912975"
+     inkscape:cy="83.889171"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g9013"
+     showgrid="false"
+     units="in"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-bbox="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-global="true"
+     scale-x="1.2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     viewbox-width="171.54"
+     viewbox-x="0.2">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2032"
+       originx="-5.0715729"
+       originy="-209.54627" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-25.567286,-63.175156)">
+    <g
+       id="edge5-7"
+       class="edge"
+       transform="matrix(0.35337962,0,0,0.35337962,106.40121,122.12592)">
+      <title
+         id="title1020">n_0-&gt;n_1</title>
+    </g>
+    <g
+       id="edge2-5"
+       class="edge"
+       transform="matrix(0.35337962,0,0,0.35337962,106.40121,122.12592)">
+      <title
+         id="title1039">n_1-&gt;n_label_1</title>
+    </g>
+    <g
+       transform="matrix(0.35337962,0,0,0.35337962,73.895255,114.56641)"
+       class="graph"
+       id="graph0-7">
+      <title
+         id="title815-6">neuron</title>
+      <!-- n_0&#45;&gt;n_label_0 -->
+      <!-- n_0&#45;&gt;n_1 -->
+      <!-- n_0&#45;&gt;n_2 -->
+      <!-- n_0&#45;&gt;n_3 -->
+      <!-- n_1&#45;&gt;n_label_1 -->
+      <!-- n_2&#45;&gt;n_label_2 -->
+      <!-- n_3&#45;&gt;n_label_3 -->
+      <!-- n_0 -->
+      <!-- n_label_0 -->
+      <!-- n_1 -->
+      <!-- n_label_1 -->
+      <!-- n_2 -->
+      <!-- n_label_2 -->
+      <!-- n_3 -->
+      <!-- n_label_3 -->
+    </g>
+    <polygon
+       id="polygon861"
+       points=""
+       style="fill:#000000;stroke:#000000;stroke-width:0.5"
+       transform="matrix(0.35337962,0,0,0.35337962,11.343113,110.59767)" />
+    <polygon
+       id="polygon861-3"
+       points=""
+       style="fill:#000000;stroke:#000000;stroke-width:0.5"
+       transform="matrix(0.35337962,0,0,0.35337962,64.086868,110.59766)" />
+    <g
+       id="g4048"
+       transform="translate(-3.3789037,24.26732)" />
+    <text
+       id="text927-4-0-0-7-6-2-6"
+       font-size="11.00"
+       font-style="italic"
+       y="142.25992"
+       x="109.77452"
+       style="font-style:italic;font-size:3.88717604px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961" />
+    <g
+       id="g6928"
+       transform="translate(15.016209,126.95303)">
+      <rect
+         y="-15.880861"
+         x="7.2824187"
+         height="8.4165707"
+         width="178.76465"
+         id="rect6119"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836" />
+      <g
+         id="g9775">
+        <g
+           transform="translate(-105.5262,-197.73657)"
+           id="g7396">
+          <circle
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+             r="3.1804166"
+             cx="116.79464"
+             cy="186.064"
+             id="ellipse866-4-0-1-0" />
+          <path
+             inkscape:connector-curvature="0"
+             style="fill:#ffffff;stroke:#000000;stroke-width:0.27380568"
+             d="m 119.25889,186.06399 a 2.4642511,2.4642511 0 0 1 -2.46425,2.46425 2.4642511,2.4642511 0 0 1 -2.46425,-2.46425 2.4642511,2.4642511 0 0 1 2.46425,-2.46425 2.4642511,2.4642511 0 0 1 2.46425,2.46425 z"
+             id="ellipse866-0-6-9-0" />
+        </g>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="45.871716"
+           cy="-11.672576"
+           id="ellipse866-4-0-7-7-0-1" />
+        <path
+           sodipodi:nodetypes="ccccccccccc"
+           id="path840-6-8-4-5-0-9"
+           d="m 78.568865,-11.517361 h 1.39691 l 0.59756,-0.80711 0.59756,1.303789 0.59758,-1.303789 0.59756,1.303789 0.59757,-1.303789 0.59756,1.303789 0.59758,-1.303789 0.59756,0.80711 h 1.33483"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <g
+           id="g5864"
+           transform="translate(63.307334,-182.55406)">
+          <g
+             id="g9640"
+             transform="translate(4.1577381)">
+            <circle
+               transform="rotate(-16.164202)"
+               id="ellipse1092-0-6-9-8-0-8"
+               cy="175.61485"
+               cx="-7.9381061"
+               r="1.2368287"
+               style="fill:#000000;stroke:#000000;stroke-width:0.35337961" />
+            <path
+               sodipodi:open="true"
+               d="m -170.44698,37.784992 a 1.2368287,1.2368287 0 0 1 -0.61841,1.071125 1.2368287,1.2368287 0 0 1 -1.23683,0 1.2368287,1.2368287 0 0 1 -0.61842,-1.071125"
+               sodipodi:end="3.1415927"
+               sodipodi:start="0"
+               sodipodi:ry="1.2368287"
+               sodipodi:rx="1.2368287"
+               sodipodi:cy="37.784992"
+               sodipodi:cx="-171.68381"
+               sodipodi:type="arc"
+               transform="rotate(-91.164202)"
+               id="ellipse1092-0-6-9-8-0"
+               style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961" />
+          </g>
+        </g>
+        <text
+           id="text5539-4"
+           y="-10.310124"
+           x="17.423052"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-align:start;text-anchor:start;stroke-width:0.26458332px"
+             y="-10.310124"
+             x="17.423052"
+             id="tspan5537-6"
+             sodipodi:role="line">Active comp.</tspan></text>
+        <text
+           id="text5539-4-2"
+           y="-10.310124"
+           x="52.022095"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:6.61458349px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-align:start;text-anchor:start;stroke-width:0.26458332px"
+             y="-10.310124"
+             x="52.022095"
+             id="tspan5537-6-6"
+             sodipodi:role="line">Passive comp.</tspan></text>
+        <text
+           id="text5539-4-2-7"
+           y="-10.310124"
+           x="88.823608"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:6.61458349px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-align:start;text-anchor:start;stroke-width:0.26458332px"
+             y="-10.310124"
+             x="88.823608"
+             id="tspan5537-6-6-5"
+             sodipodi:role="line">Coupling</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:6.61458254px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           x="112.88638"
+           y="-10.310124"
+           id="text5539"><tspan
+             sodipodi:role="line"
+             id="tspan5537"
+             x="112.88638"
+             y="-10.310124"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-align:start;text-anchor:start;stroke-width:0.26458332px">Conductance channel</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;line-height:6.61458302px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           x="157.4704"
+           y="-10.310124"
+           id="text5539-6"><tspan
+             sodipodi:role="line"
+             id="tspan5537-9"
+             x="157.4704"
+             y="-10.310124"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-align:start;text-anchor:start;stroke-width:0.26458332px">Current channel</tspan></text>
+        <g
+           id="g9780"
+           transform="translate(-0.88737829)">
+          <g
+             id="g5860"
+             transform="translate(69.84892,-179.0425)">
+            <polygon
+               id="polygon896-1-6-6"
+               points="62.0039,-108.0661 69.0039,-108.0661 69.0039,-115.0661 62.0039,-115.0661 "
+               style="fill:#000000;stroke:#000000"
+               transform="matrix(0.35337962,0,0,0.35337962,61.205132,206.79511)" />
+          </g>
+          <rect
+             style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836"
+             id="rect9657"
+             width="1.0847723"
+             height="2.1927881"
+             x="154.15338"
+             y="-12.76897" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g9013">
+      <rect
+         y="63.172642"
+         x="25.767286"
+         height="31.69537"
+         width="41.119812"
+         id="rect6119-4"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836" />
+      <g
+         id="g8989">
+        <path
+           id="path845"
+           d="m 32.034628,70.953074 c -0.264584,0 -0.79375,0 -1.322917,0"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.1766898"
+           sodipodi:nodetypes="cc" />
+        <polygon
+           id="polygon847"
+           points="57.068,-113.8409 61.9505,-111.7857 56.8521,-110.3475 "
+           style="fill:#000000;stroke:#000000;stroke-width:0.5"
+           transform="matrix(0.3526969,-0.02195578,0.02195578,0.3526969,14.24008,111.825)" />
+        <path
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           d="m 57.408827,70.934476 a 3.1804166,3.1804166 0 0 1 -3.180417,3.180416 3.1804166,3.1804166 0 0 1 -3.180417,-3.180416 3.1804166,3.1804166 0 0 1 3.180417,-3.180417 3.1804166,3.1804166 0 0 1 3.180417,3.180417 z"
+           id="ellipse866"
+           inkscape:connector-curvature="0" />
+        <text
+           id="text873"
+           font-size="11.00"
+           font-weight="bold"
+           y="66.44545"
+           x="57.088608"
+           style="font-weight:bold;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">soma</text>
+        <polygon
+           id="polygon896"
+           points="69.0039,-108.0661 69.0039,-115.0661 62.0039,-115.0661 62.0039,-108.0661 "
+           style="fill:none;stroke:#000000"
+           transform="matrix(0.35337962,0,0,0.35337962,11.711214,110.46435)" />
+        <text
+           id="text901"
+           font-size="11.00"
+           font-style="italic"
+           y="72.161156"
+           x="26.995895"
+           style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">J</text>
+        <path
+           id="path826"
+           d="M 49.229858,70.953074 H 36.000692"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961"
+           sodipodi:nodetypes="cc" />
+        <polygon
+           id="polygon828"
+           points="112.8917,-110.6965 107.8604,-109.0386 107.9247,-112.538 "
+           style="fill:#000000;stroke:#000000"
+           transform="matrix(0.3532641,-0.00903488,0.00903488,0.3532641,12.275815,111.06475)" />
+        <path
+           id="ellipse866-0"
+           d="m 56.692661,70.934476 a 2.4642511,2.4642511 0 0 1 -2.464251,2.464251 2.4642511,2.4642511 0 0 1 -2.464251,-2.464251 2.4642511,2.4642511 0 0 1 2.464251,-2.464252 2.4642511,2.4642511 0 0 1 2.464251,2.464252 z"
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.27380568"
+           inkscape:connector-curvature="0" />
+        <path
+           sodipodi:nodetypes="cc"
+           id="path840-6-8-5-6-8-0-6"
+           d="m 54.281911,74.210339 v 14.55208"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <circle
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           r="1.2368287"
+           cx="66.375679"
+           cy="81.302773"
+           id="ellipse922-5-5-9-4-6-5-41"
+           transform="rotate(8.0846415)" />
+        <text
+           id="text927-4-0-0-7-6-2-0-2"
+           font-size="11.00"
+           font-style="italic"
+           y="92.722633"
+           x="56.490322"
+           style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   id="tspan8094-2-8"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+, g<tspan
+   id="tspan8092-9-8"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+</text>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9"
+           font-size="11.00"
+           font-style="italic"
+           y="75.599754"
+           x="56.77084"
+           style="font-style:italic;font-size:3.88717604px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">m</tspan>
+</text>
+      </g>
+    </g>
+    <g
+       id="g9066"
+       transform="translate(49.108858,6.0432453)">
+      <rect
+         y="47.666233"
+         x="74.671486"
+         height="36.373383"
+         width="60.774582"
+         id="rect6119-4-2-9"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836" />
+      <g
+         id="g8967">
+        <g
+           id="g4307-3-0"
+           transform="translate(-60.007345,8.5828902)">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 166.18722,51.701016 h 1.81901 1.81901 1.81901 l 0.45475,-0.614211 0.45475,0.992187 0.45476,-0.992187 0.45475,0.992187 0.45475,-0.992187 0.45475,0.992187 0.45476,-0.992187 0.45475,0.614211 h 1.81901 1.81901 1.81901"
+             id="path840-6-8-4-5-0-3"
+             sodipodi:nodetypes="ccccccccccccccc" />
+        </g>
+        <g
+           id="g4026"
+           transform="translate(-44.033159,7.9103285)">
+          <g
+             class="node"
+             id="node14"
+             transform="matrix(0.35256328,0,0,0.35256328,97.293649,126.37181)">
+            <title
+               id="title1392">n_0_2_label</title>
+            <text
+               id="text1394"
+               font-size="9.00"
+               y="-190.78329"
+               x="176.6337"
+               style="font-size:9px;font-family:Times, serif;text-anchor:start;fill:#000000">
+              <tspan
+                 style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Times, serif;-inkscape-font-specification:'Times, serif Italic'"
+                 id="tspan3743">c</tspan>
+              <tspan
+                 style="font-size:64.99999762%;baseline-shift:sub"
+                 id="tspan3741">12</tspan>
+            </text>
+          </g>
+          <g
+             class="edge"
+             id="edge13"
+             transform="matrix(0.09124963,0.3405501,-0.3405501,0.09124963,81.578348,19.868008)">
+            <title
+               id="title1280">n_0_2-&gt;n_0_2_label</title>
+            <path
+               id="path1282"
+               d="m 149.05536,-184.63874 10.9791,-2.48518"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.5"
+               sodipodi:nodetypes="cc" />
+          </g>
+        </g>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="123.13596"
+           cy="60.475758"
+           id="ellipse866-4-0" />
+        <text
+           style="font-weight:bold;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="125.44887"
+           y="55.986732"
+           font-weight="bold"
+           font-size="11.00"
+           id="text873-8-8">soma</text>
+        <text
+           id="text901-6-7-2"
+           font-size="11.00"
+           font-style="italic"
+           y="67.244194"
+           x="76.657272"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-3-9"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">I</tspan>
+</text>
+        <path
+           id="path1022-5-6"
+           d="m 98.804442,61.678822 c -4.37124,1.180502 -10.50614,2.837323 -13.13811,3.548099"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <path
+           id="path1041-4-8"
+           d="m 81.421912,66.236813 c -0.30223,0.0677 -0.61932,0.138745 -0.9472,0.212182"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.1766898" />
+        <polygon
+           transform="matrix(0.33940975,-0.09837773,0.09837773,0.33940975,73.128032,109.88369)"
+           id="polygon1043-9-5"
+           points="61.9505,-111.7857 56.8521,-110.3475 57.068,-113.8409 "
+           style="fill:#000000;stroke:#000000;stroke-width:0.5" />
+        <circle
+           transform="rotate(-16.164202)"
+           id="ellipse1092-0-6"
+           cy="86.472755"
+           cx="62.794235"
+           r="1.2368287"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <text
+           id="text927-4-5-4"
+           font-size="11.00"
+           font-style="italic"
+           y="68.990807"
+           x="85.624908"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan2056-9-8">I</tspan>
+</text>
+        <path
+           id="path1022-5-1-1"
+           d="M 98.802052,58.614935 C 94.426192,57.45166 88.284802,55.819056 85.650062,55.118623"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <polygon
+           transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,52.463192,87.523368)"
+           id="polygon1024-9-7-1"
+           points="112.8917,-110.6965 107.8604,-109.0386 107.9247,-112.538 "
+           style="fill:#000000;stroke:#000000" />
+        <path
+           id="path1041-4-7-5"
+           d="m 81.469342,53.871006 c -0.2956,-0.09249 -0.60572,-0.189506 -0.92639,-0.289845"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.1766898" />
+        <polygon
+           transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,52.463192,87.523368)"
+           id="polygon1043-9-1-9"
+           points="61.9505,-111.7857 56.8521,-110.3475 57.068,-113.8409 "
+           style="fill:#000000;stroke:#000000;stroke-width:0.5" />
+        <circle
+           transform="rotate(13.835798)"
+           id="ellipse1092-0-1-8"
+           cy="33.012638"
+           cx="95.019089"
+           r="1.2368287"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <text
+           id="text927-4-5-7-1"
+           font-size="11.00"
+           font-style="italic"
+           y="59.068939"
+           x="85.624908"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan2056-9-7-0">E</tspan>
+</text>
+        <text
+           id="text901-6-3"
+           font-size="11.00"
+           font-style="italic"
+           y="53.469547"
+           x="76.040634"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-0"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">E</tspan>
+</text>
+        <text
+           style="font-weight:bold;font-size:3.878196px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35256329"
+           x="108.02605"
+           y="51.562263"
+           font-weight="bold"
+           font-size="11.00"
+           id="text1340-4">dendrites</text>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="103.85918"
+           cy="60.312927"
+           id="ellipse866-4-0-7" />
+        <path
+           sodipodi:nodetypes="cc"
+           style="fill:none;stroke:#000000;stroke-width:0.17628165"
+           inkscape:connector-curvature="0"
+           d="m 109.00982,52.486841 -3.01828,4.362609"
+           id="path1282-8-6-2-4" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.27380568"
+           d="m 125.62663,60.461013 a 2.4642511,2.4642511 0 0 1 -2.46425,2.464251 2.4642511,2.4642511 0 0 1 -2.46425,-2.464251 2.4642511,2.4642511 0 0 1 2.46425,-2.464252 2.4642511,2.4642511 0 0 1 2.46425,2.464252 z"
+           id="ellipse866-0-6-2" />
+        <circle
+           id="ellipse922-1"
+           cy="46.787407"
+           cx="107.33199"
+           r="0.83522898"
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           transform="rotate(8.0846396)" />
+        <path
+           sodipodi:nodetypes="cc"
+           id="path840-6-8-5-6-8-0"
+           d="m 103.80712,63.518165 v 14.55208"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <circle
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           r="1.2368287"
+           cx="113.90497"
+           cy="63.751846"
+           id="ellipse922-5-5-9-4-6-5"
+           transform="rotate(8.0846415)" />
+        <text
+           id="text927-4-0-0-7-6-2-0"
+           font-size="11.00"
+           font-style="italic"
+           y="82.030464"
+           x="106.01553"
+           style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   id="tspan8094-2"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+, g<tspan
+   id="tspan8092-9"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+</text>
+        <path
+           sodipodi:nodetypes="cc"
+           id="path840-6-8-5-6-8-0-3"
+           d="m 123.22565,63.518164 v 14.55208"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <circle
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           r="1.2368287"
+           cx="133.13051"
+           cy="61.020905"
+           id="ellipse922-5-5-9-4-6-5-5"
+           transform="rotate(8.0846415)" />
+        <text
+           id="text927-4-0-0-7-6-2-0-1"
+           font-size="11.00"
+           font-style="italic"
+           y="82.030464"
+           x="125.43406"
+           style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   id="tspan8094-2-7"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+, g<tspan
+   id="tspan8092-9-4"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub">L</tspan>
+</text>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8"
+           font-size="11.00"
+           font-style="italic"
+           y="65.852913"
+           x="105.05878"
+           style="font-style:italic;font-size:3.88717628px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8-6"
+           font-size="11.00"
+           font-style="italic"
+           y="65.852913"
+           x="125.70657"
+           style="font-style:italic;font-size:3.88717651px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8-8"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+      </g>
+    </g>
+    <g
+       id="g9099"
+       transform="translate(-70.826425,8.5526249)">
+      <rect
+         y="45.252327"
+         x="146.89801"
+         height="36.751362"
+         width="40.174881"
+         id="rect6119-4-2"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836" />
+      <g
+         id="g8916">
+        <text
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="148.85634"
+           y="64.954453"
+           font-style="italic"
+           font-size="11.00"
+           id="text901-6-7">g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan2500-3">I</tspan>
+</text>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="175.1682"
+           cy="57.159195"
+           id="ellipse866-4" />
+        <text
+           style="font-weight:bold;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="177.10313"
+           y="52.67017"
+           font-weight="bold"
+           font-size="11.00"
+           id="text873-8">soma</text>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.35337961"
+           inkscape:connector-curvature="0"
+           d="m 171.00352,59.389085 c -4.37124,1.180502 -10.50615,2.837323 -13.13812,3.548099"
+           id="path1022-5" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.1766898"
+           inkscape:connector-curvature="0"
+           d="m 153.62099,63.947076 c -0.30224,0.0677 -0.61933,0.138745 -0.94721,0.212182"
+           id="path1041-4" />
+        <polygon
+           style="fill:#000000;stroke:#000000;stroke-width:0.5"
+           points="61.9505,-111.7857 56.8521,-110.3475 57.068,-113.8409 "
+           id="polygon1043-9"
+           transform="matrix(0.33940975,-0.09837773,0.09837773,0.33940975,145.3271,107.59395)" />
+        <circle
+           style="fill:none;stroke:#000000;stroke-width:0.35337961"
+           r="1.2368287"
+           cx="132.77655"
+           cy="104.37311"
+           id="ellipse1092-0"
+           transform="rotate(-16.164202)" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.35337961"
+           inkscape:connector-curvature="0"
+           d="M 171.00112,54.624305 C 166.62527,53.46103 160.48387,51.828426 157.84913,51.127993"
+           id="path1022-5-1" />
+        <polygon
+           style="fill:#000000;stroke:#000000"
+           points="107.9247,-112.538 112.8917,-110.6965 107.8604,-109.0386 "
+           id="polygon1024-9-7"
+           transform="matrix(0.34312633,0.08450726,-0.08450726,0.34312633,124.66226,83.532738)" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:0.1766898"
+           inkscape:connector-curvature="0"
+           d="m 153.66841,49.880376 c -0.29559,-0.09249 -0.60572,-0.189506 -0.92639,-0.289845"
+           id="path1041-4-7" />
+        <polygon
+           style="fill:#000000;stroke:#000000;stroke-width:0.5"
+           points="57.068,-113.8409 61.9505,-111.7857 56.8521,-110.3475 "
+           id="polygon1043-9-1"
+           transform="matrix(0.34312633,0.08450726,-0.08450726,0.34312633,124.66226,83.532738)" />
+        <circle
+           style="fill:none;stroke:#000000;stroke-width:0.35337961"
+           r="1.2368287"
+           cx="164.16896"
+           cy="11.872101"
+           id="ellipse1092-0-1"
+           transform="rotate(13.835798)" />
+        <text
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="157.82399"
+           y="66.701073"
+           font-style="italic"
+           font-size="11.00"
+           id="text927-4-5">E<tspan
+   id="tspan2056-9"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">I</tspan>
+</text>
+        <text
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="157.82399"
+           y="55.078308"
+           font-style="italic"
+           font-size="11.00"
+           id="text927-4-5-7">E<tspan
+   id="tspan2056-9-7"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">E</tspan>
+</text>
+        <text
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="148.2397"
+           y="49.478916"
+           font-style="italic"
+           font-size="11.00"
+           id="text901-6">g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub"
+   id="tspan2500">E</tspan>
+</text>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.27380568"
+           d="m 177.63246,57.159195 a 2.4642511,2.4642511 0 0 1 -2.46425,2.464251 2.4642511,2.4642511 0 0 1 -2.46426,-2.464251 2.4642511,2.4642511 0 0 1 2.46426,-2.464252 2.4642511,2.4642511 0 0 1 2.46425,2.464252 z"
+           id="ellipse866-0-6" />
+        <circle
+           id="ellipse922-1-0"
+           cy="34.489571"
+           cx="178.14426"
+           r="0.83522898"
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           transform="rotate(8.0846397)" />
+        <g
+           transform="translate(89.389138,-76.713861)"
+           id="g8173-6-3">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 85.850472,137.1111 v 14.55208"
+             id="path840-6-8-5-6-8-0-1"
+             sodipodi:nodetypes="cc" />
+          <circle
+             transform="rotate(8.0846415)"
+             id="ellipse922-5-5-9-4-6-5-4"
+             cy="139.13872"
+             cx="106.47659"
+             r="1.2368287"
+             style="fill:#000000;stroke:#000000;stroke-width:0.35337961" />
+          <text
+             style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="88.058884"
+             y="155.6234"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-0-0-7-6-2-0-6">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub"
+   id="tspan8094-2-9">L</tspan>
+, g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub"
+   id="tspan8092-9-42">L</tspan>
+</text>
+        </g>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8-3"
+           font-size="11.00"
+           font-style="italic"
+           y="62.540493"
+           x="177.22278"
+           style="font-style:italic;font-size:3.88717651px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8-83"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+      </g>
+    </g>
+    <g
+       id="g9215"
+       transform="translate(116.79679,-47.573976)">
+      <rect
+         y="91.419205"
+         x="74.707153"
+         height="52.815346"
+         width="80.618332"
+         id="rect6119-4-2-9-6"
+         style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.29300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.99840836" />
+      <g
+         id="g8885">
+        <g
+           id="g4307-3"
+           transform="translate(-59.891152,68.841368)">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 166.18722,51.701016 h 1.81901 1.81901 1.81901 l 0.45475,-0.614211 0.45475,0.992187 0.45476,-0.992187 0.45475,0.992187 0.45475,-0.992187 0.45475,0.992187 0.45476,-0.992187 0.45475,0.614211 h 1.81901 1.81901 1.81901"
+             id="path840-6-8-4-5-0"
+             sodipodi:nodetypes="ccccccccccccccc" />
+        </g>
+        <g
+           id="g4307-3-1"
+           transform="translate(-40.236391,68.841368)">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 166.18722,51.701016 h 1.81901 1.81901 1.81901 l 0.45475,-0.614211 0.45475,0.992187 0.45476,-0.992187 0.45475,0.992187 0.45475,-0.992187 0.45475,0.992187 0.45476,-0.992187 0.45475,0.614211 h 1.81901 1.81901 1.81901"
+             id="path840-6-8-4-5-0-1"
+             sodipodi:nodetypes="ccccccccccccccc" />
+        </g>
+        <g
+           id="g4026-1"
+           transform="translate(-24.465308,68.155562)">
+          <g
+             class="node"
+             id="node14-7"
+             transform="matrix(0.35256328,0,0,0.35256328,97.293649,126.37181)">
+            <title
+               id="title1392-5">n_0_2_label</title>
+            <text
+               id="text1394-9"
+               font-size="9.00"
+               y="-190.78329"
+               x="176.6337"
+               style="font-size:9px;font-family:Times, serif;text-anchor:start;fill:#000000">
+              <tspan
+                 style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Times, serif;-inkscape-font-specification:'Times, serif Italic'"
+                 id="tspan3743-6">c</tspan>
+              <tspan
+                 style="font-size:64.99999762%;baseline-shift:sub"
+                 id="tspan3741-2">12</tspan>
+            </text>
+          </g>
+          <g
+             class="edge"
+             id="edge13-1"
+             transform="matrix(0.09124963,0.3405501,-0.3405501,0.09124963,81.578348,19.868008)">
+            <title
+               id="title1280-7">n_0_2-&gt;n_0_2_label</title>
+            <path
+               id="path1282-8"
+               d="m 149.05536,-184.63874 10.9791,-2.48518"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.5"
+               sodipodi:nodetypes="cc" />
+          </g>
+        </g>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="142.91251"
+           cy="120.70522"
+           id="ellipse866-4-0-1" />
+        <text
+           style="font-weight:bold;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+           x="145.22542"
+           y="116.21619"
+           font-weight="bold"
+           font-size="11.00"
+           id="text873-8-8-8">soma</text>
+        <path
+           id="path1022-5-6-8"
+           d="m 98.359275,121.90828 c -4.37124,1.1805 -10.50614,2.83732 -13.13811,3.5481"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <path
+           id="path1041-4-8-1"
+           d="m 80.933757,126.51638 c -0.30223,0.0677 -0.61932,0.13874 -0.9472,0.21218"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.1766898" />
+        <polygon
+           transform="matrix(0.33940975,-0.09837773,0.09837773,0.33940975,72.682855,170.11315)"
+           id="polygon1043-9-5-8"
+           points="61.9505,-111.7857 56.8521,-110.3475 57.068,-113.8409 "
+           style="fill:#000000;stroke:#000000;stroke-width:0.5" />
+        <circle
+           transform="rotate(-16.164202)"
+           id="ellipse1092-0-6-9"
+           cy="144.1973"
+           cx="45.599316"
+           r="1.2368287"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <text
+           id="text927-4-5-4-6"
+           font-size="11.00"
+           font-style="italic"
+           y="129.22026"
+           x="85.179741"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan2056-9-8-4">I</tspan>
+</text>
+        <path
+           id="path1022-5-1-1-3"
+           d="m 98.356885,118.84439 c -4.37586,-1.16328 -10.51725,-2.79588 -13.15199,-3.49631"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <polygon
+           transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,52.018019,147.75282)"
+           id="polygon1024-9-7-1-3"
+           points="112.8917,-110.6965 107.8604,-109.0386 107.9247,-112.538 "
+           style="fill:#000000;stroke:#000000" />
+        <path
+           id="path1041-4-7-5-3"
+           d="m 81.003539,114.06705 c -0.2956,-0.0925 -0.60572,-0.18951 -0.92639,-0.28984"
+           inkscape:connector-curvature="0"
+           style="fill:none;stroke:#000000;stroke-width:0.1766898" />
+        <polygon
+           transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,52.018019,147.75282)"
+           id="polygon1043-9-1-9-8"
+           points="61.9505,-111.7857 56.8521,-110.3475 57.068,-113.8409 "
+           style="fill:#000000;stroke:#000000;stroke-width:0.5" />
+        <circle
+           transform="rotate(13.835798)"
+           id="ellipse1092-0-1-8-6"
+           cy="91.601006"
+           cx="108.99012"
+           r="1.2368287"
+           style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+        <text
+           id="text927-4-5-7-1-0"
+           font-size="11.00"
+           font-style="italic"
+           y="119.29839"
+           x="85.179741"
+           style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan2056-9-7-0-4">E</tspan>
+</text>
+        <g
+           id="g5908"
+           transform="translate(-33.082859,64.494642)">
+          <g
+             id="g6027">
+            <text
+               id="text901-6-3-8-0"
+               font-size="11.00"
+               font-style="italic"
+               y="49.816444"
+               x="109.26203"
+               style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-0-8-2"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961" />
+</text>
+            <text
+               id="text901-6-3-8-0-7"
+               font-size="11.00"
+               font-style="italic"
+               y="51.139362"
+               x="111.11592"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">E</text>
+            <text
+               id="text901-6-3-8-0-7-1"
+               font-size="11.00"
+               font-style="italic"
+               y="48.499817"
+               x="111.08034"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">1</text>
+          </g>
+        </g>
+        <g
+           id="g5908-3"
+           transform="translate(-32.315442,77.669315)">
+          <g
+             id="g6027-2">
+            <text
+               id="text901-6-3-8-0-1"
+               font-size="11.00"
+               font-style="italic"
+               y="49.816444"
+               x="109.26203"
+               style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-0-8-2-5"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961" />
+</text>
+            <text
+               id="text901-6-3-8-0-7-9"
+               font-size="11.00"
+               font-style="italic"
+               y="51.139362"
+               x="111.11592"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">I</text>
+            <text
+               id="text901-6-3-8-0-7-1-9"
+               font-size="11.00"
+               font-style="italic"
+               y="48.499817"
+               x="110.9467"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">1</text>
+          </g>
+        </g>
+        <g
+           id="g5908-3-1"
+           transform="translate(6.489605,45.785937)">
+          <g
+             id="g6027-2-4">
+            <text
+               id="text901-6-3-8-0-1-9"
+               font-size="11.00"
+               font-style="italic"
+               y="49.816444"
+               x="109.26203"
+               style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-0-8-2-5-1"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961" />
+</text>
+            <text
+               id="text901-6-3-8-0-7-9-0"
+               font-size="11.00"
+               font-style="italic"
+               y="51.139362"
+               x="111.11592"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">I</text>
+            <text
+               id="text901-6-3-8-0-7-1-9-7"
+               font-size="11.00"
+               font-style="italic"
+               y="48.499817"
+               x="111.24738"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">2</text>
+          </g>
+        </g>
+        <g
+           id="g5908-3-1-5"
+           transform="translate(19.168451,45.785937)">
+          <g
+             id="g6027-2-4-8">
+            <text
+               id="text901-6-3-8-0-1-9-7"
+               font-size="11.00"
+               font-style="italic"
+               y="49.816444"
+               x="109.26203"
+               style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">g<tspan
+   id="tspan2500-0-8-2-5-1-0"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961" />
+</text>
+            <text
+               id="text901-6-3-8-0-7-9-0-4"
+               font-size="11.00"
+               font-style="italic"
+               y="51.139362"
+               x="111.11592"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">E</text>
+            <text
+               id="text901-6-3-8-0-7-1-9-7-8"
+               font-size="11.00"
+               font-style="italic"
+               y="48.499817"
+               x="111.24738"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.46944451px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';text-anchor:start;fill:#000000;stroke-width:0.35337961">2</text>
+          </g>
+        </g>
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="123.63573"
+           cy="120.54237"
+           id="ellipse866-4-0-7-7" />
+        <circle
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.35337961"
+           r="3.1804166"
+           cx="103.22501"
+           cy="120.54237"
+           id="ellipse866-4-0-7-7-0" />
+        <g
+           transform="translate(-40.945095,69.361085)"
+           id="g5445">
+          <g
+             class="node"
+             id="node14-7-2"
+             transform="matrix(0.35256328,0,0,0.35256328,94.152458,112.95246)">
+            <title
+               id="title1392-5-5">n_0_2_label</title>
+            <text
+               id="text1394-9-4"
+               font-size="9.00"
+               y="-190.78329"
+               x="176.6337"
+               style="font-size:9px;font-family:Times, serif;text-anchor:start;fill:#000000">
+              <tspan
+                 style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Times, serif;-inkscape-font-specification:'Times, serif Italic'"
+                 id="tspan3743-6-0">c</tspan>
+              <tspan
+                 style="font-size:64.99999762%;baseline-shift:sub"
+                 id="tspan3741-2-5">23</tspan>
+            </text>
+          </g>
+          <g
+             class="edge"
+             id="edge13-1-9"
+             transform="matrix(0.09124963,0.3405501,-0.3405501,0.09124963,76.925252,12.307288)">
+            <title
+               id="title1280-7-4">n_0_2-&gt;n_0_2_label</title>
+            <path
+               id="path1282-8-6"
+               d="m 152.46802,-194.26837 7.56644,7.14445"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.5"
+               sodipodi:nodetypes="cc" />
+          </g>
+        </g>
+        <g
+           id="g5435"
+           transform="translate(-40.945095,68.841368)">
+          <text
+             id="text1340-4-8"
+             font-size="11.00"
+             font-weight="bold"
+             y="43.365776"
+             x="170.29745"
+             style="font-weight:bold;font-size:3.878196px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35256329">proximal</text>
+          <g
+             class="edge"
+             id="edge13-1-9-4"
+             transform="matrix(0.09124963,0.3405501,-0.3405501,0.09124963,89.333688,11.768065)">
+            <title
+               id="title1280-7-4-7">n_0_2-&gt;n_0_2_label</title>
+            <path
+               id="path1282-8-6-2"
+               d="m 150.29784,-198.59577 9.73662,11.47185"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.5"
+               sodipodi:nodetypes="cc" />
+          </g>
+        </g>
+        <g
+           transform="rotate(90,99.260379,75.804256)"
+           id="g4423-9">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 139.30437,53.066911 c -4.37124,1.180502 -10.50614,2.837323 -13.13811,3.548099"
+             id="path1022-5-6-8-4" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.1766898"
+             inkscape:connector-curvature="0"
+             d="m 121.92184,57.624902 c -0.30223,0.0677 -0.61932,0.138745 -0.9472,0.212182"
+             id="path1041-4-8-1-7" />
+          <polygon
+             style="fill:#000000;stroke:#000000;stroke-width:0.5"
+             points="56.8521,-110.3475 57.068,-113.8409 61.9505,-111.7857 "
+             id="polygon1043-9-5-8-5"
+             transform="matrix(0.33940975,-0.09837773,0.09837773,0.33940975,113.62795,101.27178)" />
+          <circle
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             r="1.2368287"
+             cx="104.09058"
+             cy="89.476112"
+             id="ellipse1092-0-6-9-4"
+             transform="rotate(-16.164202)" />
+          <text
+             style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="-61.177124"
+             y="129.10918"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-5-4-6-8"
+             transform="rotate(-90)">E<tspan
+   id="tspan2056-9-8-4-1"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.52666426px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">I</tspan>
+</text>
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 139.30198,50.003024 c -4.37586,-1.163275 -10.51725,-2.795879 -13.15199,-3.496312"
+             id="path1022-5-1-1-3-2" />
+          <polygon
+             style="fill:#000000;stroke:#000000"
+             points="107.8604,-109.0386 107.9247,-112.538 112.8917,-110.6965 "
+             id="polygon1024-9-7-1-3-8"
+             transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,92.963114,78.911457)" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.1766898"
+             inkscape:connector-curvature="0"
+             d="m 121.96927,45.259095 c -0.2956,-0.09249 -0.60572,-0.189506 -0.92639,-0.289845"
+             id="path1041-4-7-5-3-9" />
+          <polygon
+             style="fill:#000000;stroke:#000000;stroke-width:0.5"
+             points="56.8521,-110.3475 57.068,-113.8409 61.9505,-111.7857 "
+             id="polygon1043-9-1-9-8-3"
+             transform="matrix(0.34312632,0.08450726,-0.08450726,0.34312632,92.963114,78.911457)" />
+          <circle
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             r="1.2368287"
+             cx="132.28445"
+             cy="14.965444"
+             id="ellipse1092-0-1-8-6-6"
+             transform="rotate(13.835798)" />
+          <text
+             style="font-style:italic;font-size:3.88717556px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="-52.083981"
+             y="129.17599"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-5-7-1-0-8"
+             transform="rotate(-90)">E<tspan
+   id="tspan2056-9-7-0-4-0"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">E</tspan>
+</text>
+        </g>
+        <text
+           style="font-weight:bold;font-size:3.87819624px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35256332"
+           x="98.675095"
+           y="114.87038"
+           font-weight="bold"
+           font-size="11.00"
+           id="text1340-4-8-0">distal</text>
+        <g
+           id="g8173"
+           transform="translate(17.639788,-13.363477)">
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.35337961"
+             inkscape:connector-curvature="0"
+             d="m 85.850472,137.1111 v 14.55208"
+             id="path840-6-8-5-6-8"
+             sodipodi:nodetypes="cc" />
+          <circle
+             transform="rotate(8.0846415)"
+             id="ellipse922-5-5-9-4-6"
+             cy="139.13872"
+             cx="106.47659"
+             r="1.2368287"
+             style="fill:#000000;stroke:#000000;stroke-width:0.35337961" />
+          <text
+             style="font-style:italic;font-size:3.8871758px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="88.058884"
+             y="155.6234"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-0-0-7-6-2">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub"
+   id="tspan8094">L</tspan>
+, g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64.99999762%;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub"
+   id="tspan8092">L</tspan>
+</text>
+        </g>
+        <g
+           id="g8158"
+           transform="translate(17.639788,-13.363477)">
+          <g
+             id="g4558-0"
+             transform="translate(-77.694653,82.204845)">
+            <path
+               sodipodi:nodetypes="cc"
+               id="path840-6-8-5-6"
+               d="M 183.85761,54.906251 V 69.458334"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+            <circle
+               style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+               r="1.2368287"
+               cx="191.94873"
+               cy="43.967556"
+               id="ellipse922-5-5-9-4"
+               transform="rotate(8.0846415)" />
+          </g>
+          <text
+             style="font-style:italic;font-size:3.88717604px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="108.43819"
+             y="155.6234"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-0-0-7-6-2-5">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan8094-4">L</tspan>
+, g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan8092-4">L</tspan>
+</text>
+        </g>
+        <g
+           id="g8166"
+           transform="translate(17.639788,-13.363477)">
+          <g
+             transform="translate(-58.584883,82.204845)"
+             id="g4558">
+            <path
+               sodipodi:nodetypes="cc"
+               id="path840-6-8-5"
+               d="M 183.85761,54.906251 V 69.458334"
+               inkscape:connector-curvature="0"
+               style="fill:none;stroke:#000000;stroke-width:0.35337961" />
+            <circle
+               style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+               r="1.2368287"
+               cx="191.94873"
+               cy="43.967556"
+               id="ellipse922-5-5-9"
+               transform="rotate(8.0846415)" />
+          </g>
+          <text
+             style="font-style:italic;font-size:3.88717628px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961"
+             x="127.14705"
+             y="155.6234"
+             font-style="italic"
+             font-size="11.00"
+             id="text927-4-0-0-7-6-2-5-9">E<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan8094-4-9">L</tspan>
+, g<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961"
+   id="tspan8092-4-3">L</tspan>
+</text>
+        </g>
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff;stroke:#000000;stroke-width:0.27380568"
+           d="m 145.37676,120.70521 a 2.4642511,2.4642511 0 0 1 -2.46425,2.46425 2.4642511,2.4642511 0 0 1 -2.46425,-2.46425 2.4642511,2.4642511 0 0 1 2.46425,-2.46425 2.4642511,2.4642511 0 0 1 2.46425,2.46425 z"
+           id="ellipse866-0-6-9" />
+        <circle
+           id="ellipse922-1-0-4"
+           cy="106.51922"
+           cx="115.2715"
+           r="0.83522898"
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           transform="rotate(8.0846397)" />
+        <circle
+           id="ellipse922-1-0-4-2"
+           cy="98.214714"
+           cx="137.45143"
+           r="0.83522898"
+           style="fill:#000000;stroke:#000000;stroke-width:0.35337961"
+           transform="rotate(8.0846397)" />
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8-33"
+           font-size="11.00"
+           font-style="italic"
+           y="125.54928"
+           x="105.46091"
+           style="font-style:italic;font-size:3.88717651px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8-80"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8-4"
+           font-size="11.00"
+           font-style="italic"
+           y="125.54928"
+           x="125.84021"
+           style="font-style:italic;font-size:3.88717651px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8-7"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+        <text
+           id="text927-4-0-0-7-6-2-0-2-9-8-68"
+           font-size="11.00"
+           font-style="italic"
+           y="125.54928"
+           x="145.28407"
+           style="font-style:italic;font-size:3.88717651px;font-family:Times, serif;text-anchor:start;fill:#000000;stroke-width:0.35337961">C<tspan
+   id="tspan8302-8-9"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.5266645px;font-family:Times, serif;-inkscape-font-specification:'Times, serif';baseline-shift:sub;stroke-width:0.35337961">m</tspan>
+</text>
+      </g>
+    </g>
+  </g>
+</svg>
