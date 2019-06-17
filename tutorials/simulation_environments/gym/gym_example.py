@@ -10,9 +10,9 @@ env_names = [
     'LunarLanderContinuous-v2',
     'Breakout-v0',
     'Acrobot-v1',
-    'Pendulum-v0',
-    'Ant-v1',
-    'Humanoid-v1',
+    #'Pendulum-v0',
+    #'Ant-v1',
+    #'Humanoid-v1',
     'Skiing-v0',
 
 ]
@@ -22,7 +22,7 @@ with model:
     # dt of CartPole is 0.02
     # dt of Nengo is 0.001
     env = GymEnv(
-        env_name=env_names[6],
+        env_name=env_names[0],
         reset_signal=False,
         reset_when_done=True,
         return_reward=True,
