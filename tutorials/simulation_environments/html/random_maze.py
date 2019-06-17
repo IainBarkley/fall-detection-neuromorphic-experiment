@@ -1,6 +1,5 @@
-# Code from: https://github.com/zuoxingdong/mazelab/blob/master/mazelab/generators/
+# Code modified from: https://github.com/zuoxingdong/mazelab/blob/master/mazelab/generators/
 import numpy as np
-from skimage.draw import random_shapes
 from itertools import product as cartesian_product
 
 
@@ -42,21 +41,6 @@ def random_maze(width=81, height=51, complexity=.75, density=.75):
     return Z.astype(int)
 
 
-def random_shape_maze(width, height, max_shapes, max_size, allow_overlap, shape=None):
-    x, _ = random_shapes([height, width], max_shapes, max_size=max_size, multichannel=False, shape=shape, allow_overlap=allow_overlap)
-    
-    x[x == 255] = 0
-    x[np.nonzero(x)] = 1
-    
-    # wall
-    x[0, :] = 1
-    x[-1, :] = 1
-    x[:, 0] = 1
-    x[:, -1] = 1
-    
-    return x
-
-
 class MazeGenerator(object):
     def __init__(self):
         self.maze = None
@@ -70,7 +54,7 @@ class MazeGenerator(object):
 
 class RandomBlockMazeGenerator(MazeGenerator):
     def __init__(self, maze_size, obstacle_ratio):
-        super().__init__()
+        super(MazeGenerator, self).__init__()
         
         self.maze_size = maze_size
         self.obstacle_ratio = obstacle_ratio
