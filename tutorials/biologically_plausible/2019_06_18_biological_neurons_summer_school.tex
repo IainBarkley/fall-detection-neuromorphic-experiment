@@ -516,14 +516,18 @@
 
 \begin{frame}{Neural Engineering Framework}
 \centering
+\vspace{0.5cm}
 \begin{columns}
-\column{0.3\textwidth}
+\column{0.2\textwidth}
+	\centering
     state space \\
     % vector \\
     $\mathbf{x}$ \\
-\column{0.3\textwidth}
+\column{0.2\textwidth}
+	\centering
     $\Longleftrightarrow$ \\
-\column{0.3\textwidth}
+\column{0.2\textwidth}
+	\centering
     neuron space \\
     % spikes, PSC \\
     $\text{A}$ \\
@@ -538,15 +542,15 @@
 \begin{frame}{Problem Statement}
 Tuning-curve-based methods assume non-adaptive neurons:
 \begin{equation*}
-    a_i = F(\mathbf{x})
+    a_i = f(\mathbf{x})
 \end{equation*} \\
 \vspace{1cm}
 For adaptive neurons, activity depends on signal history
 \begin{equation*}
-    a_i = F(\mathbf{x}, t)
+    a_i = f(\mathbf{x}, t)
 \end{equation*} \\
 \vspace{1cm}
-\textbf{Goal}: extend NEF methods to account for cellular dynamics
+\textbf{Goal}: Extend NEF methods to account for cellular dynamics
 \end{frame}
 
 %\section{Theory}
@@ -589,7 +593,6 @@ Considerations:
 \end{frame}
 
 \begin{frame}[fragile]{Temporal Encoding}
-	Find \texttt{gain} and \texttt{bias} that achieve desired \texttt{max\_rates} and \texttt{intercepts}
 	\begin{figure}
 	    \centering
 	    \includegraphics[width=0.8\textwidth]{media/atxt5.png}
@@ -598,11 +601,12 @@ Considerations:
 	\begin{figure}
 	    \centering
 	    \includegraphics[width=0.8\textwidth]{media/tc1_wide2.png}
+		\caption{Find \texttt{gain} and \texttt{bias} that achieve desired \texttt{max\_rates} and \texttt{intercepts}}
 	\end{figure}
 \end{frame}
 
 \begin{frame}{Static Decoding}
-\begin{columns}
+\begin{columns}[t]
 	\column{0.5\textwidth}
 	\centering
 	% Find $\mathbf{d}$ that minimizes the state space error over all $\mathbf{x}$
@@ -759,7 +763,7 @@ $V$, $R$, $C$ \\
 \begin{frame}{Dynamical System: 2D Oscillator}
 \begin{figure}
     \centering
-    %\includegraphics[width=0.9\textwidth]{media/oscillator.png}
+    \includegraphics[width=0.75\textwidth]{media/oscillator_state_order2_old.png}
     \caption{Implementing a two-dimensional oscillator using $200$ recurrently-connected neurons}
 \end{figure}
 \end{frame}
@@ -767,7 +771,7 @@ $V$, $R$, $C$ \\
 \begin{frame}{Dynamical System: Lorenz Attractor}
 \begin{figure}
     \centering
-    %\includegraphics[width=0.9\textwidth]{media/oscillator.png}
+    \includegraphics[width=0.75\textwidth]{media/lorenz.png}
     \caption{Implementing a three-dimensional chaotic attractor using $2000$ recurrently-connected neurons}
 \end{figure}
 \end{frame}
