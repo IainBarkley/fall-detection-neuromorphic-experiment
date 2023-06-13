@@ -21,66 +21,62 @@ size_in = 9         # 9 features of the fall detection data
 theta = 0.5
 q = 20
 
-# generate "training" data for the output layer of the network
-# dt = 0.001
-# ts = np.arange(10000)*dt
-# stim1 = np.sin(ts*2*np.pi).reshape(-1,1)
-# stim2 = np.sin(ts*2*np.pi*2).reshape(-1,1)
-# x1 = LDN(theta=theta, q=q).apply(stim1)
-# x2 = LDN(theta=theta, q=q).apply(stim2)
-# eval_points = np.vstack([x1, x2])
-# targets = np.hstack([np.ones(len(x1)), -np.ones(len(x2))]).reshape(-1,1)
+# simulation parameters
+dt = 0.001
 
 # load data and generate the train/test split
-# ddf = pd.read_csv(os.path.join(data_dir,subject_file),index_col=0)
+ddf = pd.read_csv(os.path.join(data_dir,subject_file),index_col=0).drop(['TimeStamp(s)','FrameCounter'],axis=1)
 
 train_test_split = 0.5
+chunk_size = 3600
 
-domain = list(range(500))
+chunk_indices = np.arange(0,ddf.shape[0],chunk_size)
+train_chunk_indices = np.random.choice(chunk_indices,size = int(len(chunk_indices)*train_test_split))
+test_chunk_indices = list(set(chunk_indices)-set(train_chunk_indices))
 
-result = []
-while len(domain) > train_test_split:
-    print(domain)
-    n = np.random.choice(domain)
-    result.append(n)
-    domain = [x for x in domain if x <= n - 10 or x >= x + 10]
+train_df = pd.DataFrame(columns=ddf.columns)
+for idx in train_chunk_indices:
+    train_df = pd.concat([train_df,ddf.iloc[idx:idx+chunk_size,:]],axis=0)
+
+test_df = pd.DataFrame(columns=ddf.columns)
+for idx in test_chunk_indices:
+    test_df = pd.concat([test_df,ddf.iloc[idx:idx+chunk_size,:]],axis=0)
+
+train_xs = train_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].to_numpy()
+lmu_train_xs = LDN(theta=theta, q=q, size_in=size_in).apply(train_xs)
+train_ys = train_df[['Fall/No Fall']].to_numpy()
+
+test_xs = test_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].to_numpy()
+test_ys = test_df[['Fall/No Fall']].to_numpy()
+
+model = nengo.Network()
+with model:
+
+    def stim_func(t):
+        index = int(t/dt)-1
+        return test_xs[index,:]
+        
+    stim = nengo.Node( size_out = size_in, output = stim_func )
     
-np.random.shuffle(result)
-print(result)
-
-# out = generate_train_test_split(ddf)
-
-# samples = [df.iloc[x:x+block_size] for x in np.random.randint(len(df), size=num_samples)]
-# train_xs = 
-# train_ys = 
-
-# test_xs = 
-# test_ys = 
-
-# model = nengo.Network()
-# with model:
-    # # stim = nengo.Node(lambda t: np.sin(2*np.pi*t) if t<4 else np.sin(2*np.pi*t*2))
+    ldn = nengo.Node( LDN( theta = theta, q = q, size_in = size_in))
+    nengo.Connection(stim, ldn, synapse=None)
     
-    # ldn = nengo.Node(LDN(theta=theta, q=q))
-    # nengo.Connection(stim, ldn, synapse=None)
+    neurons = nengo.Ensemble(n_neurons=200, dimensions=q*size_in, neuron_type=nengo.LIF())
+    nengo.Connection(ldn, neurons)
     
-    # neurons = nengo.Ensemble(n_neurons=200, dimensions=q, neuron_type=nengo.LIF())
-    # nengo.Connection(ldn, neurons)
+    # initialize the network with the training data
+    category = nengo.Ensemble(n_neurons=100,dimensions=1)
+    nengo.Connection(neurons, category, eval_points=lmu_train_xs, function=train_ys)
     
-    # # initialize the network with the training data
-    # category = nengo.Node(None, size_in=1)
-    # nengo.Connection(neurons, category, eval_points=eval_points, function=targets)
-    
-    # p_stim = nengo.Probe(stim)
-    # p_ldn = nengo.Probe(ldn)
-    # p_category = nengo.Probe(category, synapse=0.01)
+    p_stim = nengo.Probe(stim)
+    p_ldn = nengo.Probe(ldn)
+    p_category = nengo.Probe(category, synapse=0.01)
 
-# sim = nengo.Simulator(model)
-# with sim:
-    # sim.run(8)
+sim = nengo.Simulator(model,dt=dt)
+with sim:
+    sim.run(test_df.shape[0]*dt-1)
     
-# fig,ax = plt.subplots(1,1)
-# ax.plot(sim.trange(), sim.data[p_stim], label='stimulus')
-# ax.plot(sim.trange(), sim.data[p_category], label='output')
-# ax.legend()
-# plt.show()    
+fig,ax = plt.subplots(1,1)
+ax.plot(sim.trange(), sim.data[p_category], label='output')
+ax.legend()
+plt.show()    
