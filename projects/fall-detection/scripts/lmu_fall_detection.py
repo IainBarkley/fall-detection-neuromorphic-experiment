@@ -54,33 +54,33 @@ with model:
 
     def stim_func(t):
         index = int(t/dt)-1
-        return test_xs[index,:]
-        #return train_xs[index,:]
-        
+        #return test_xs[index,:]
+        return train_xs[index,:]
+
     stim = nengo.Node( size_out = size_in, output = stim_func )
-    
+
     ldn = nengo.Node( LDN( theta = theta, q = q, size_in = size_in))
     nengo.Connection(stim, ldn, synapse=None)
-    
+
     neurons = nengo.Ensemble(n_neurons=1000, dimensions=q*size_in, neuron_type=nengo.LIFRate())
-    nengo.Connection(ldn, neurons)
-    
+    nengo.Connection(ldn, neurons, synapse = None)
+
     # initialize the network with the training data
-    category = nengo.Ensemble(n_neurons=1000,dimensions=1,radius=100)
-    nengo.Connection(neurons, category, eval_points=lmu_train_xs, function=train_ys)
-    
+    category = nengo.Ensemble(n_neurons=1000,dimensions=1,radius=100, neuron_type=nengo.Direct())
+    nengo.Connection(neurons, category, eval_points=lmu_train_xs, function=train_ys, synapse = None)
+
     p_stim = nengo.Probe(stim)
     p_ldn = nengo.Probe(ldn)
     p_category = nengo.Probe(category, synapse=0.01)
 
 sim = nengo.Simulator(model,dt=dt)
 with sim:
-    sim.run(test_df.shape[0]*dt)
-    #sim.run(train_df.shape[0]*dt)
-    
+    #sim.run(test_df.shape[0]*dt)
+    sim.run(train_df.shape[0]*dt)
+
 fig,ax = plt.subplots(1,1)
 ax.plot(sim.trange(), sim.data[p_category], label='Predicted')
-ax.plot(sim.trange(), test_ys.flatten(), label='True')
-#ax.plot(sim.trange(), train_ys.flatten(), label='True')
+#ax.plot(sim.trange(), test_ys.flatten(), label='True')
+ax.plot(sim.trange(), train_ys.flatten(), label='True')
 ax.legend()
-plt.show()    
+plt.show()
