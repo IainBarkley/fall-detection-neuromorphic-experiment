@@ -4,14 +4,15 @@
 
 DOING
 - LMU + 3-layer deep network integration (Iain)
-- Fix discontinuities (Kathryn)
-- Training across individuals (Kathryn)
-- Data augmentation (Kathryn)
+- Fix training scheme / loading of training data (Collab? ComputeCanada? OpenCL? Sequential learning rule?)
 
 DONE
+- Fix discontinuities (Kathryn)
+- Training across individuals (Kathryn)
 - Performance quantification
 
 TO DO/BACKLOG
+- Data augmentation (Kathryn)
 - Turn this into a trial file to make it easier to play with parameters
 - Selection of optimal hyperparams
 
