@@ -62,19 +62,21 @@ with model:
         index = int(t/dt)-1
         #return test_xs[index,:]
         return train_xs[index,:]
-        
+
+
     stim = nengo.Node( size_out = size_in, output = stim_func )
-    
+
     ldn = nengo.Node( LDN( theta = theta, q = q, size_in = size_in))
     nengo.Connection(stim, ldn, synapse=None)
-    
+
     neurons = nengo.Ensemble(n_neurons=1000, dimensions=q*size_in, neuron_type=nengo.LIFRate())
-    nengo.Connection(ldn, neurons)
-    
+    nengo.Connection(ldn, neurons, synapse = None)
+
     # initialize the network with the training data
-    category = nengo.Ensemble(n_neurons=1000,dimensions=1,radius=scaling_factor)
-    nengo.Connection(neurons, category, eval_points=lmu_train_xs, function=train_ys)
-    
+    category = nengo.Ensemble(n_neurons=1000,dimensions=1,radius=100, neuron_type=nengo.Direct())
+    nengo.Connection(neurons, category, eval_points=lmu_train_xs, function=train_ys, synapse = None)
+
+
     p_stim = nengo.Probe(stim)
     p_ldn = nengo.Probe(ldn)
     p_category = nengo.Probe(category, synapse=0.01)
@@ -83,16 +85,23 @@ sim = nengo.Simulator(model,dt=dt)
 with sim:
     #sim.run(test_df.shape[0]*dt)
     sim.run(train_df.shape[0]*dt)
-    
-predictions = np.where(train_ys.flatten() > np.max(train_ys.flatten())*decision_threshold, 1, 0)    
+
+fig,ax = plt.subplots(1,1)
+ax.plot(sim.trange(), sim.data[p_category], label='Predicted')
+#ax.plot(sim.trange(), test_ys.flatten(), label='True')
+ax.plot(sim.trange(), train_ys.flatten(), label='True')
+ax.legend()
+plt.show()
+
+predictions = np.where(train_ys.flatten() > np.max(train_ys.flatten())*decision_threshold, 1, 0)
 print(predictions.dtype)
 print(train_ys.flatten().dtype)
 
 tn, fp, fn, tp = confusion_matrix( train_ys, predictions.flatten() ).ravel()
-    
+
 for performance_metric, number in zip(('True Negatives','False Positives','False Negatives','True Positives'),(tn, fp, fn, tp)):
     print('{}: {}'.format(performance_metric,number))
-    
+
 fig,(ax1,ax2) = plt.subplots(2,1,sharex=True)
 ax1.plot(sim.trange(), train_ys.flatten(), label='True')
 ax2.plot(sim.trange(), sim.data[p_category]/scaling_factor, label='Predicted')
@@ -100,4 +109,4 @@ ax2.plot(sim.trange(),predictions)
 
 ax1.legend()
 ax2.legend()
-plt.show()    
+plt.show()
