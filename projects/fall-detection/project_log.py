@@ -2,6 +2,10 @@
 
 14.06.2023
 
+TO DO
+- characterize inputs to determine needed dimensionality of LDN
+- decorrelate input features and determine needed size_in
+
 DOING
 - LMU + 3-layer deep network integration (Iain)
 - Fix training scheme / loading of training data (Collab? ComputeCanada? OpenCL? Sequential learning rule?)
@@ -10,10 +14,10 @@ DONE
 - Fix discontinuities (Kathryn)
 - Training across individuals (Kathryn)
 - Performance quantification
-
-TO DO/BACKLOG
-- Data augmentation (Kathryn)
 - Turn this into a trial file to make it easier to play with parameters
+
+BACKLOG
+- Data augmentation (Kathryn)
 - Selection of optimal hyperparams
 
 
