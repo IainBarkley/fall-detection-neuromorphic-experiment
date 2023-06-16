@@ -4,6 +4,7 @@
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix
 
+from datetime import datetime
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
@@ -23,10 +24,11 @@ included_features = 'All'
 subjects = []
 for i in range(6,39):
     subjects.append('SA{:02d}'.format(i))
+subjects.remove('SA34')
 
 # LDN parameters
 size_in = 9         # 9 features of the fall detection data
-theta = 0.5
+theta = 1.
 q = 20
 
 # simulation parameters
@@ -35,13 +37,19 @@ dt = 0.01
 # training dataset parameters
 train_test_split = 0.8
 hl_radius = 1.
+hl_neurons = 1000
 test_on_train = False
 
 # prediction parameters
 decision_threshold = 0.5
 
+# visualization
+plot = False
+
+out_df = pd.DataFrame()
 for subject_to_train_on in subjects:
 
+    print('Evaluating LMU model on {}'.format(subject_to_train_on))
     ### prepare training and test data ###
     # load data and generate the train/test split
 
@@ -141,7 +149,7 @@ for subject_to_train_on in subjects:
         model.ldn = nengo.Node( LDN( theta = theta, q = q, size_in = size_in))
         nengo.Connection(model.stim, model.ldn, synapse=None)
 
-        model.neurons = nengo.Ensemble(n_neurons = 4096, dimensions=q*size_in, neuron_type=nengo.LIFRate(),radius=hl_radius)
+        model.neurons = nengo.Ensemble(n_neurons = hl_neurons, dimensions=q*size_in, neuron_type=nengo.LIFRate(),radius=hl_radius)
         nengo.Connection(model.ldn, model.neurons, synapse = None)
 
         # initialize the network with the training data
@@ -152,29 +160,58 @@ for subject_to_train_on in subjects:
         p_ldn = nengo.Probe(model.ldn,synapse=None)
         p_category = nengo.Probe(model.category, synapse=None)
 
+    ### test the model 
     sim = nengo.Simulator(model,dt=dt)
-    
     lmu_test_xs = LDN(theta = theta, q = q, size_in = n_features).apply(test_xs,dt=dt)
     _,neuron_activities = nengo.utils.ensemble.tuning_curves(model.neurons,sim,lmu_test_xs)
     decoding_weights = sim.data[model.decode_category].weights.T
-    
     category_output = neuron_activities @ decoding_weights
     
+    ### compute performance metrics
     predictions = np.where( category_output > np.max(category_output)*decision_threshold, 1, 0)
-    print('predictions shape: ', predictions.shape)
-
-    ts = np.arange(0., len(test_ys)*dt, dt)
-
-    fig,(ax1,ax2) = plt.subplots(2,1,sharex=True)
-    ax1.plot(ts, test_ys.flatten(), label='True')
-    ax2.plot(ts, category_output, label='Output')
-    ax2.plot(ts, predictions, label='Predicted Label')
-    ax1.legend()
-    ax2.legend()
-    plt.show()
-
     tn, fp, fn, tp = confusion_matrix( test_ys, predictions.flatten() ).ravel()
-    ac = (tn+tp)/(tn+fp+fn+tp)
+    sensitivity = (tp)/(tp+fn)
+    specificity = (tn)/(tn+fp)
+    accuracy = (tn+tp)/(len(test_ys))
 
-    for performance_metric, number in zip(('True Negatives','False Positives','False Negatives','True Positives','Accuracy'),(tn, fp, fn, tp, ac)):
+    if plot == True:
+        ts = np.arange(0., len(test_ys)*dt, dt)
+        fig,(ax1,ax2) = plt.subplots(2,1,sharex=True,figsize=(9,4))
+        ax1.plot(ts, test_ys.flatten(), label='True')
+        ax2.plot(ts, category_output, label='Output')
+        ax2.plot(ts, predictions, label='Predicted Label')
+        ax1.legend(loc='upper left')
+        ax2.legend(loc='upper left')
+        plt.show()
+
+    metric_labels = ['True Negatives','False Positives','False Negatives','True Positives','Sensitivity','Specificity','Accuracy']
+    metric_values = [tn, fp, fn, tp, sensitivity, specificity, accuracy]
+    for performance_metric, number in zip( metric_labels,metric_values ):
         print('{}: {}'.format(performance_metric,number))
+    
+    temp_df = pd.DataFrame( data = {
+        'Subject'           : subject_to_train_on,
+        'IncludedFeatures'  : included_features,
+        'ldn_theta'         : theta,
+        'ldn_q'             : q,
+        'sim_dt'            : dt,
+        'train_test_split'  : train_test_split,
+        'hl_radius'         : hl_radius,
+        'hl_neurons'        : hl_neurons,
+        'decision_threshold'    : decision_threshold,
+        'test_on_train'     : test_on_train,   
+        'true_neg'          : tn,
+        'false_pos'         : fp,
+        'false_neg'         : fn,
+        'true_pos'          : tp,
+        'accuracy'          : accuracy,
+        'sensitivity'       : sensitivity,
+        'specificity'       : specificity,
+        }, index = [0] )
+    
+    out_df = pd.concat([out_df,temp_df],axis=0,ignore_index=True)
+
+format = "%y%m%d-%H%M%S"
+date_str = datetime.now().strftime(format)
+print(date_str)
+out_df.to_csv('../performance_data/lmu_nengo_{}.csv'.format(date_str))
