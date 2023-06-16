@@ -52,7 +52,7 @@ if included_features == 'All':
     n_features = 9
 else:
     n_features = len(included_features)
-    
+
 ### prepare training data ###
 # these 'empty' matrix have an undesired row of zeros that will need to be removed later
 train_xs = np.zeros( n_features ).reshape(1,-1)
@@ -69,22 +69,22 @@ for train_trial in train_trials:
         temp_train_xs = temp_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].values
     else:
         temp_train_xs = temp_df[included_features].values
-        
+
     # TO DO apply scaler HERE on temp_train_xs)
-    
+
     #scaler = StandardScaler().fit(temp_train_xs)
     #temp_train_xs = scaler.transform(temp_train_xs)
     temp_lmu_train_xs = LDN(theta = theta, q = q, size_in = n_features).apply(temp_train_xs,dt=dt)
-    
+
     # append it to the full training data set
     train_xs = np.vstack([train_xs,temp_train_xs[1:,:]])
     lmu_train_xs = np.vstack([lmu_train_xs,temp_lmu_train_xs[1:,:]])
-    
+
     temp_train_ys = temp_df['Fall/No Fall'].values.reshape(-1,1)
     train_ys = np.vstack([train_ys,temp_train_ys[1:,:]])
-    
+
 # remove the first row of zeros created at initialization
-train_xs = train_xs[1:,:]        
+train_xs = train_xs[1:,:]
 lmu_train_xs = lmu_train_xs[1:,:]
 train_ys = train_ys[1:,:]
 
@@ -95,24 +95,24 @@ if test_on_train == False:
     test_xs = np.zeros( n_features ).reshape(1,-1)
     test_ys = np.zeros( 1 ).reshape(1,-1)
     for test_trial in test_trials:
-    
+
         # load the data from the trial
         temp_df = pd.read_csv(os.path.join(training_data_dir,test_trial),index_col=0)
-        
+
         # select the desired input features
         if included_features == 'All':
             temp_test_xs = temp_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].values
         else:
             temp_test_xs = temp_df[included_features].values
-        
+
         # scaler = StandardScaler().fit(temp_test_xs)
         # temp_test_xs = scaler.transform(temp_test_xs)
-        
+
         # append it to the full training data set
         test_xs = np.vstack([test_xs,temp_test_xs])
         temp_test_ys = temp_df['Fall/No Fall'].values.reshape(-1,1)
         test_ys = np.vstack([test_ys,temp_test_ys])
-    
+
     test_xs = test_xs[1:,:]
     test_ys = test_ys[1:,:]
 
