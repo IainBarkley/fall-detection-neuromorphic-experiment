@@ -14,7 +14,6 @@ from utilities import generate_train_test_split
 
 def readucr(filename):
     data = np.loadtxt(filename, delimiter="\t")
-    y = data[:, 0]
     x = data[:, 1:]
     return x, y.astype(int)
 
@@ -66,6 +65,12 @@ num_classes = len(np.unique(train_ys))
 train_xs = train_xs.reshape((train_xs.shape[0], train_xs.shape[1], 1))
 test_xs = test_xs.reshape((test_xs.shape[0], test_xs.shape[1], 1))
 
+idx = np.random.permutation(len(train_xs))
+print(len(train_xs))
+train_xs = train_xs[idx]
+train_ys = train_ys[idx]
+
+
 def make_model(input_shape):
     input_layer = keras.layers.Input(input_shape)
 
@@ -90,7 +95,7 @@ def make_model(input_shape):
 print(x_train.shape[1:])
 print(train_xs.shape[1:])
 model = make_model(input_shape=test_xs.shape[1:])
-#keras.utils.plot_model(model, show_shapes=True)
+keras.utils.plot_model(model, show_shapes=True)
 
 epochs = 70
 batch_size = 32

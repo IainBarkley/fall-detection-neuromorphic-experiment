@@ -49,7 +49,7 @@ for idx in test_chunk_indices:
     test_df = pd.concat([test_df,ddf.iloc[idx:idx+chunk_size,:]],axis=0)
 
 train_xs = train_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].to_numpy().astype(float)
-lmu_train_xs = LDN(theta=theta, q=q, size_in=size_in).apply(train_xs)
+#lmu_train_xs = LDN(theta=theta, q=q, size_in=size_in).apply(train_xs)
 train_ys = train_df[['Fall/No Fall']].to_numpy().astype(int)
 
 test_xs = test_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].to_numpy().astype(float)
@@ -87,11 +87,10 @@ def make_model(input_shape):
     conv3 = keras.layers.Conv1D(filters=64, kernel_size=3, padding="same")(conv2)
     conv3 = keras.layers.BatchNormalization()(conv3)
     conv3 = keras.layers.ReLU()(conv3)
-
-    gap = keras.layers.GlobalAveragePooling1D()(conv3)
-    lstm = keras.layers.LSTM(4, return_sequences=True, return_state=True)
-    whole_seq_output, final_memory_state, final_carry_state = lstm(input_layer)
-    output_layer = keras.layers.Dense(num_classes, activation="softmax")(gap)
+    print(conv3)
+    #gap = keras.layers.GlobalAveragePooling1D()(conv3)
+    lstm = keras.layers.LSTM(9)
+    output_layer = lstm(conv3)
 
     return keras.models.Model(inputs=input_layer, outputs=output_layer)
 
@@ -105,7 +104,7 @@ batch_size = 32
 
 callbacks = [
     keras.callbacks.ModelCheckpoint(
-        "best_model.h5", save_best_only=True, monitor="val_loss"
+        "best_model_lstm.h5", save_best_only=True, monitor="val_loss"
     ),
     keras.callbacks.ReduceLROnPlateau(
         monitor="val_loss", factor=0.5, patience=20, min_lr=0.0001
@@ -127,7 +126,7 @@ model.compile(
 #    verbose=1,
 #)
 
-model = keras.models.load_model("best_model.h5")
+model = keras.models.load_model("best_model_lstm.h5")
 
 test_loss, test_acc = model.evaluate(test_xs, test_ys)
 

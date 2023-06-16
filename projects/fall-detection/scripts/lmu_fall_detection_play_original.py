@@ -99,7 +99,7 @@ lmu_train_xs = lmu_train_xs[1:,:]
 train_ys = train_ys[1:,:]
 =======
         n_features = len(included_features)
-        
+
     ### prepare training data ###
     # these 'empty' matrix have an undesired row of zeros that will need to be removed later
     train_xs = np.zeros( n_features ).reshape(1,-1)
@@ -142,22 +142,22 @@ train_ys = train_ys[1:,:]
     test_ys = test_ys[1:,:]
 =======
             temp_train_xs = temp_df[included_features].values
-            
+
         # TO DO apply scaler HERE on temp_train_xs)
-        
+
         scaler = StandardScaler().fit(temp_train_xs)
         temp_train_xs = scaler.transform(temp_train_xs)
         temp_lmu_train_xs = LDN(theta = theta, q = q, size_in = n_features).apply(temp_train_xs,dt=dt)
-        
+
         # append it to the full training data set
         train_xs = np.vstack([train_xs,temp_train_xs[10:,:]])
         lmu_train_xs = np.vstack([lmu_train_xs,temp_lmu_train_xs[10:,:]])
-        
+
         temp_train_ys = temp_df['Fall/No Fall'].values.reshape(-1,1)
         train_ys = np.vstack([train_ys,temp_train_ys[10:,:]])
-        
+
     # remove the first row of zeros created at initialization
-    train_xs = train_xs[1:,:]        
+    train_xs = train_xs[1:,:]
     lmu_train_xs = lmu_train_xs[1:,:]
     train_ys = train_ys[1:,:]
 
@@ -169,24 +169,24 @@ train_ys = train_ys[1:,:]
         test_xs = np.zeros( n_features ).reshape(1,-1)
         test_ys = np.zeros( 1 ).reshape(1,-1)
         for test_trial in test_trials:
-        
+
             # load the data from the trial
             temp_df = pd.read_csv(os.path.join(training_data_dir,test_trial),index_col=0)
-            
+
             # select the desired input features
             if included_features == 'All':
                 temp_test_xs = temp_df[['AccX','AccY','AccZ','GyrX','GyrY','GyrZ','EulerX','EulerY','EulerZ']].values
             else:
                 temp_test_xs = temp_df[included_features].values
-            
+
             scaler = StandardScaler().fit(temp_test_xs)
             temp_test_xs = scaler.transform(temp_test_xs)
-            
+
             # append it to the full training data set
             test_xs = np.vstack([test_xs,temp_test_xs])
             temp_test_ys = temp_df['Fall/No Fall'].values.reshape(-1,1)
             test_ys = np.vstack([test_ys,temp_test_ys])
-        
+
         test_xs = test_xs[1:,:]
         test_ys = test_ys[1:,:]
 
@@ -219,13 +219,13 @@ train_ys = train_ys[1:,:]
         p_ldn = nengo.Probe(model.ldn,synapse=None)
         p_category = nengo.Probe(model.category, synapse=None)
 
-    ### test the model 
+    ### test the model
     sim = nengo.Simulator(model,dt=dt)
     lmu_test_xs = LDN(theta = theta, q = q, size_in = n_features).apply(test_xs,dt=dt)
     _,neuron_activities = nengo.utils.ensemble.tuning_curves(model.neurons,sim,lmu_test_xs)
     decoding_weights = sim.data[model.decode_category].weights.T
     category_output = neuron_activities @ decoding_weights
-    
+
     ### compute performance metrics
     predictions = np.where( category_output > np.max(category_output)*decision_threshold, 1, 0)
     tn, fp, fn, tp = confusion_matrix( test_ys, predictions.flatten() ).ravel()
@@ -248,7 +248,7 @@ train_ys = train_ys[1:,:]
     metric_values = [tn, fp, fn, tp, sensitivity, specificity, accuracy]
     for performance_metric, number in zip( metric_labels,metric_values ):
         print('{}: {}'.format(performance_metric,number))
-    
+
     temp_df = pd.DataFrame( data = {
         'Subject'           : subject_to_train_on,
         'IncludedFeatures'  : included_features,
@@ -259,7 +259,7 @@ train_ys = train_ys[1:,:]
         'hl_radius'         : hl_radius,
         'hl_neurons'        : hl_neurons,
         'decision_threshold'    : decision_threshold,
-        'test_on_train'     : test_on_train,   
+        'test_on_train'     : test_on_train,
         'true_neg'          : tn,
         'false_pos'         : fp,
         'false_neg'         : fn,
@@ -268,7 +268,7 @@ train_ys = train_ys[1:,:]
         'sensitivity'       : sensitivity,
         'specificity'       : specificity,
         }, index = [0] )
-    
+
     out_df = pd.concat([out_df,temp_df],axis=0,ignore_index=True)
 
 <<<<<<< HEAD
